@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CAMERA : MonoBehaviour {
@@ -21,40 +21,39 @@ public class CAMERA : MonoBehaviour {
 						return (dir == Mathf.Sign (target - n)) ? n : target; // if n has now passed the target then return to target
 				}
 		}
-	void LateUpdate () {
-		if (target.transform.position.x > 60) 
+/*	void LateUpdate () {
+		if (target.transform.position.x > 50) 
 		{
 			Vector3 stophere = transform.position;
-			stophere.x = 60;
+			stophere.x = 50;
 			stophere.y = transform.position.y;
 			stophere.z = -10;
 			transform.position = stophere;
 		} 
-		if (target.transform.position.x < -37) 
+		if (target.transform.position.x < -60) 
 		{
-			/*Vector3 stopnow = transform.position;
-			stopnow.x = -37;
+			Vector3 stopnow = transform.position;
+			stopnow.x = (-60);
 			stopnow.y = transform.position.y;
 			stopnow.z = -10;
-			transform.position = stopnow;*/
-			Vector3 stoplol = transform.position;
-			stoplol.x = -38;
+			transform.position = stopnow;
+			/*Vector3 stoplol = transform.position;
+			stoplol.x = -50;
 			transform.position = stoplol;
 		}
-		if (target.transform.position.x < 60 || target.transform.position.x > -37) {
+		if (target.transform.position.x < 50 || target.transform.position.x > -60) {
 			if (target) {
 				float x = IncrementTowards(transform.position.x, target.position.x, trackSpeed);
 				float y = IncrementTowards(transform.position.y, target.position.y, trackSpeed);
 				transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-
 			}
 		}
 		
-	}
+	}*/
 	
 	// Update is called once per frame
 	void Update () {
-
+		Debug.Log (target.transform.position);
 		Vector3 cam = transform.position;
 		Vector3 player = target.transform.position;
 		cam.x = player.x;
@@ -62,15 +61,15 @@ public class CAMERA : MonoBehaviour {
 		cam.z = -10;
 		transform.position = cam;
 
-		if (target.transform.position.x > 60) 
+		if (target.transform.position.x > 49) 
 		{
 			Vector3 stophere = transform.position;
-			stophere.x = 60;
+			stophere.x = 49;
 			stophere.y = transform.position.y;
-			stophere.z = -10;
+			stophere.z = transform.position.z;
 			transform.position = stophere;
 		} 
-		if (target.transform.position.x < -37) 
+		if (target.transform.position.x < -49) 
 		{
 			/*Vector3 stopnow = transform.position;
 			stopnow.x = -37;
@@ -78,15 +77,16 @@ public class CAMERA : MonoBehaviour {
 			stopnow.z = -10;
 			transform.position = stopnow;*/
 			Vector3 stoplol = transform.position;
-			stoplol.x = -38;
+			stoplol.x = -49;
+			stoplol.y = transform.position.y;
+			stoplol.z = transform.position.z;
 			transform.position = stoplol;
 		}
-		if (target.transform.position.x < 60 || target.transform.position.x > -37) {
+		if (target.transform.position.x < 49 || target.transform.position.x > -49) {
 			if (target) {
 				float x = IncrementTowards(transform.position.x, target.position.x, trackSpeed);
 				float y = IncrementTowards(transform.position.y, target.position.y, trackSpeed);
 				transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
-
 			}
 		}
 
