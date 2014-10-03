@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: e52e3ce0b8a4aa54e8bce05e4f54e384
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Ammo-Man(Side)
+    21300002: Ammo-Man(Side)_0
+    21300004: Ammo-Man(Side)_1
+    21300006: Ammo-Man(Side)_2
+    21300008: Ammo-Man(Side)_3
+    21300010: Ammo-Man(Side)_4
+    21300012: Ammo-Man(Side)_5
+    21300014: Ammo-Man(Side)_6
+    21300016: Ammo-Man(Side)_7
+    21300018: Ammo-Man(Side)_8
+    21300020: Ammo-Man(Side)_9
+    21300022: Ammo-Man(Side)_10
+    21300024: Ammo-Man(Side)_11
+    21300026: Ammo-Man(Side)_12
+    21300028: Ammo-Man(Side)_13
+    21300030: Ammo-Man(Side)_14
+    21300032: Ammo-Man(Side)_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Ammo-Man(Side)_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 610
+        width: 90
+        height: 40
+      alignment: 9
+      pivot: {x: .694304228, y: .744822681}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_1
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 524
+        width: 108
+        height: 115
+      alignment: 9
+      pivot: {x: .502811015, y: .036958646}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_2
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 519
+        width: 99
+        height: 111
+      alignment: 9
+      pivot: {x: .556524694, y: .919066846}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_3
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 444
+        width: 71
+        height: 116
+      alignment: 9
+      pivot: {x: .440887719, y: .822611868}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_4
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 433
+        width: 100
+        height: 48
+      alignment: 9
+      pivot: {x: .510492563, y: .266834885}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_5
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 375
+        width: 67
+        height: 116
+      alignment: 9
+      pivot: {x: .561640978, y: .873832166}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_6
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 335
+        width: 64
+        height: 98
+      alignment: 9
+      pivot: {x: .866142035, y: .817627907}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_7
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 335
+        width: 53
+        height: 59
+      alignment: 9
+      pivot: {x: .823351562, y: .814180017}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_8
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 216
+        width: 178
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_9
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 179
+        width: 107
+        height: 119
+      alignment: 9
+      pivot: {x: .699388862, y: .873259962}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_10
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 89
+        width: 65
+        height: 97
+      alignment: 9
+      pivot: {x: .548426688, y: .957917035}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_11
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 179
+        width: 81
+        height: 91
+      alignment: 9
+      pivot: {x: .910197675, y: .734446287}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 118
+        width: 161
+        height: 47
+      alignment: 9
+      pivot: {x: .530412853, y: .232108265}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_13
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 82
+        width: 62
+        height: 66
+      alignment: 9
+      pivot: {x: .787695587, y: .632480264}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_14
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 12
+        width: 94
+        height: 42
+      alignment: 9
+      pivot: {x: .68231523, y: .733165205}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ammo-Man(Side)_15
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 13
+        width: 71
+        height: 105
+      alignment: 9
+      pivot: {x: .529556036, y: .946344554}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
