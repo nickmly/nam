@@ -26,7 +26,15 @@ public class Gun : MonoBehaviour
 		Vector3 dir = (Input.mousePosition - sp).normalized; // the direction we want the gun to go is the mousePosition minus the gun position normalized
 		rigidbody.AddForce (dir * (velocity.x + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
 
-
+	/*	if(person="Likes dick")
+		{
+			
+		person = gay;
+		}
+		else
+		{
+			person = stillgay;
+		}*/
 	}
 
 	void OnCollisionEnter(Collision col)
