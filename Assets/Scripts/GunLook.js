@@ -14,12 +14,12 @@
 		if(facingRight)
 		{
 			transform.rotation.eulerAngles.z = Mathf.Atan2(-(screenPos.y - transform.position.y),
-		                                               (screenPos.x - transform.position.x))*Mathf.Rad2Deg - offset;
+		                                               ((screenPos.x - transform.position.x)))*Mathf.Rad2Deg - offset;
 		}
 		else
 		{
 			transform.rotation.eulerAngles.z = Mathf.Atan2((screenPos.y - transform.position.y),
-		                                               (screenPos.x - transform.position.x))*Mathf.Rad2Deg - offset;
+		                                               ((screenPos.x - transform.position.x)))*Mathf.Rad2Deg - offset;
 		}
 
 		var v3 : Vector3 = Input.mousePosition;
@@ -30,7 +30,7 @@
 		{
 			var scale : Vector3 = transform.localScale;
 			scale.x = -1f;
-			scale.y = -1f;
+			scale.y = 1f;
 			transform.localScale = scale;		
 			facingRight = false;
 		}
@@ -38,7 +38,7 @@
 		{
 			scale = transform.localScale;
 			scale.x = 1f;
-			scale.y = 1f;
+			scale.y = -1f;
 			transform.localScale = scale;
 			facingRight = true;	   
 		}   

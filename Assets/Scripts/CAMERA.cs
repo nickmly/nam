@@ -62,15 +62,15 @@ public class CAMERA : MonoBehaviour {
 		cam.z = -10;
 		transform.position = cam;
 
-		if (target.transform.position.x > 49) 
+		if (target.transform.position.x > 52) 
 		{
 			Vector3 stophere = transform.position;
-			stophere.x = 49;
+			stophere.x = 52;
 			stophere.y = transform.position.y;
 			stophere.z = transform.position.z;
 			transform.position = stophere;
 		} 
-		if (target.transform.position.x < -49) 
+		if (target.transform.position.x < -52) 
 		{
 			/*Vector3 stopnow = transform.position;
 			stopnow.x = -37;
@@ -78,12 +78,12 @@ public class CAMERA : MonoBehaviour {
 			stopnow.z = -10;
 			transform.position = stopnow;*/
 			Vector3 stoplol = transform.position;
-			stoplol.x = -49;
+			stoplol.x = -52;
 			stoplol.y = transform.position.y;
 			stoplol.z = transform.position.z;
 			transform.position = stoplol;
 		}
-		if (target.transform.position.x < 49 || target.transform.position.x > -49) {
+		if (target.transform.position.x < 52 || target.transform.position.x > -52) {
 			if (target) {
 				float x = IncrementTowards(transform.position.x, target.position.x, trackSpeed);
 				float y = IncrementTowards(transform.position.y, target.position.y, trackSpeed);

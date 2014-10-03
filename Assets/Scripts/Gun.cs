@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
 	private float timer = 30f;
 	private bool collided = false;
 	public Vector3 tempScale;
+	public Movement moveSpeed;
 
 	void Start()
 	{

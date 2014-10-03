@@ -4,7 +4,7 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
 
-		private Vector2 velocity;
+		public Vector2 velocity;
 		public float moveSpeed = 5f;
 		public float jumpSpeed = 300f;
 		public bool hasJumped = false;
