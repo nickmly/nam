@@ -14,10 +14,14 @@ public class Movement : MonoBehaviour
 		
 		public Gun gun;		
 		public Transform gunTransform;
-
+		public bool canThrow = true;
+		public string currentGun = "Pistol";
+		private float gunTimer = 0.5f;
 		// Use this for initialization
 		void Start ()
 		{	
+			gun = (Gun)GameObject.Find (currentGun).GetComponent("Gun");
+			gunTransform = (Transform)GameObject.Find (currentGun).GetComponent("Transform");
 			anim = GetComponent<Animator> ();
 		}
 
@@ -30,13 +34,44 @@ public class Movement : MonoBehaviour
 			}
 			anim.SetBool ("HasJumped", hasJumped);
 
-			if (Input.GetKeyDown (KeyCode.Mouse0)) 
+			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
 			{				
 				gun.Throw (facingRight, velocity.x);
+				canThrow = false;
+			}	
+
+			if(!canThrow)
+			{
+				if (gunTimer > 0f)
+				{
+					gunTimer -= Time.deltaTime;
+				}
+				else
+				{
+					gunTimer = 0.5f;
+					canThrow = true;
+				}
 			}
 
 		}
-		// Update is called once per frame
+
+//		public void GetNewGun()
+//		{
+//			if(!canThrow)
+//			{			
+//				GameObject newGun = (GameObject)Instantiate(GameObject.Find(name));
+//				
+//				gun = (Gun)newGun.GetComponent("Gun");
+//				gunTransform = (Transform)newGun.GetComponent("Transform");
+//				Destroy(newGun.GetComponent("BoxCollider"));			
+//				
+//				newGun.transform.parent = transform.GetChild(4).GetChild(0).GetChild(0);
+//				newGun.rigidbody.isKinematic = true;
+//				canThrow = true;
+//			}
+//		}
+
+	// Update is called once per frame
 		void FixedUpdate ()
 		{
 			velocity = rigidbody.velocity;

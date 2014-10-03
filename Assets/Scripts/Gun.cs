@@ -4,40 +4,66 @@ using System.Collections;
 public class Gun : MonoBehaviour 
 {
 	public Vector2 velocity;
-	public Transform player;
+	public Transform arm;
+	public Movement player;
+	private BoxCollider box;
+	private float timer = 30f;
+	private bool collided = false;
+	public Vector3 tempScale;
+
+	void Start()
+	{
+		tempScale = transform.localScale;
+		arm = (Transform)GameObject.Find ("RightArm").GetComponent("Transform");
+		player = (Movement)GameObject.Find ("Body").GetComponent("Movement");
+	}
 
 	public void Throw (bool isRight, float playerSpeed) 
 	{
-		Vector3 tempScale = transform.localScale;
-		transform.parent.DetachChildren();
+//		transform.parent.DetachChildren();
+//
 
+		GameObject newGun = (GameObject)Instantiate(GameObject.Find (name));
+		newGun.AddComponent("BoxCollider");
 		if(!isRight)
 		{
-			transform.localScale = new Vector3(-tempScale.x,-tempScale.y,tempScale.z);
+			newGun.transform.localScale = new Vector3(-tempScale.x,-tempScale.y,tempScale.z);
 		}
 		else
 		{
-			transform.localScale = new Vector3(-tempScale.x,tempScale.y,tempScale.z);
+			newGun.transform.localScale = new Vector3(-tempScale.x,tempScale.y,tempScale.z);
 		}
 
-
-		rigidbody.isKinematic = false;
-		Vector3 sp = Camera.main.WorldToScreenPoint(transform.position); // get gun position in screen space (where the mouse is)
+		newGun.rigidbody.isKinematic = false;
+		newGun.transform.position = transform.position;
+		Vector3 sp = Camera.main.WorldToScreenPoint(newGun.transform.position); // get gun position in screen space (where the mouse is)
 		Vector3 dir = (Input.mousePosition - sp).normalized; // the direction we want the gun to go is the mousePosition minus the gun position normalized
-		rigidbody.AddForce (dir * (velocity.x + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
-
-
+		newGun.rigidbody.AddForce (dir * (velocity.x + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
 	}
 
 	void OnCollisionEnter(Collision col)
 	{
-		Debug.Log("FUCK");
+		if(!collided)
+		{
+			collided = true;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		//transform.rotation = Quaternion.identity;
-		//transform.rotation = player.rotation;
+
+		if (collided)
+		{
+			if(timer > 0f)
+			{
+				timer -= Time.deltaTime;
+			}
+			else
+			{
+
+				Destroy (gameObject);
+			}
+		}
 	}
 }
