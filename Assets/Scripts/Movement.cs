@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
 
 			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
 			{				
-				gun.Throw (facingRight, velocity.x);
+				gun.Throw (facingRight, velocity.x, gun.transform.rotation);
 				canThrow = false;
 			}	
 

@@ -18,7 +18,7 @@ public class Gun : MonoBehaviour
 		player = (Movement)GameObject.Find ("Body").GetComponent("Movement");
 	}
 
-	public void Throw (bool isRight, float playerSpeed) 
+	public void Throw (bool isRight, float playerSpeed, Quaternion gunRot) 
 	{
 //		transform.parent.DetachChildren();
 //
@@ -33,7 +33,7 @@ public class Gun : MonoBehaviour
 		{
 			newGun.transform.localScale = new Vector3(-tempScale.x,tempScale.y,tempScale.z);
 		}
-
+		newGun.transform.rotation = gunRot;
 		newGun.rigidbody.isKinematic = false;
 		newGun.transform.position = transform.position;
 		Vector3 sp = Camera.main.WorldToScreenPoint(newGun.transform.position); // get gun position in screen space (where the mouse is)
