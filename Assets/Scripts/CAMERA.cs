@@ -52,8 +52,9 @@ public class CAMERA : MonoBehaviour {
 	}*/
 	
 	// Update is called once per frame
-	void Update () {
-		Debug.Log (target.transform.position);
+	void Update () 
+	{
+
 		Vector3 cam = transform.position;
 		Vector3 player = target.transform.position;
 		cam.x = player.x;

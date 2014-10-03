@@ -111,7 +111,7 @@ public class Movement : MonoBehaviour
 		}
 
 		void OnCollisionEnter (Collision col)
-		{
-			hasJumped = false;
+		{			
+			hasJumped = false;			
 		}
 }
