@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Movement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Gun.cs">
     <Files>
-      <File FileName="Assets/Scripts/Movement.cs" Line="41" Column="6" />
-      <File FileName="Assets/Scripts/Gun.cs" Line="42" Column="60" />
+      <File FileName="Assets\Scripts\Gun.cs" Line="15" Column="21" />
+      <File FileName="Assets\Scripts\Movement.cs" Line="107" Column="3" />
+      <File FileName="Assets\Scripts\HUD.cs" Line="16" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
