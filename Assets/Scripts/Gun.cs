@@ -6,13 +6,14 @@ public class Gun : MonoBehaviour
 	public Vector2 velocity;
 	public Transform arm;
 	public Movement player;
-	private BoxCollider box;
+
 	private float timer = 30f;
 	private bool collided = false;
 	public Vector3 tempScale;
 
 	public int ammo;
 	public int maxAmmo;
+
 
 	void Start()
 	{
@@ -27,6 +28,8 @@ public class Gun : MonoBehaviour
 		{
 			GameObject newGun = (GameObject)Instantiate (GameObject.Find (name));
 			newGun.AddComponent ("BoxCollider2D");
+
+
 			if (!isRight) 
 			{
 				newGun.transform.localScale = new Vector3 (-tempScale.x, -tempScale.y, tempScale.z);
@@ -50,7 +53,7 @@ public class Gun : MonoBehaviour
 	{
 		if(!collided)
 		{
-			velocity.x = 0f;
+			rigidbody2D.drag = 20;
 			collided = true;
 		}
 	}
