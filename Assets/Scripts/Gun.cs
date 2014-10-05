@@ -45,6 +45,7 @@ public class Gun : MonoBehaviour
 			newGun.rigidbody.AddForce (dir * (velocity.x + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
 			newGun.rigidbody.AddTorque (0, 0, velocity.x); //rotate the gun in relation to how hard the player throws it
 			ammo -= 1;
+			renderer.enabled = false;
 		}
 	}
 	void OnCollisionEnter(Collision col)
@@ -61,6 +62,10 @@ public class Gun : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.R)) 
 		{
 			ammo = maxAmmo;
+			if(!renderer.enabled)
+			{
+				renderer.enabled = true;
+			}
 		}
 
 		if (collided)

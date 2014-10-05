@@ -48,6 +48,10 @@ public class Movement : MonoBehaviour
 				}
 				else
 				{
+					if(gun.ammo > 0)
+					{
+						gun.renderer.enabled = true;
+					}
 					gunTimer = 0.5f;
 					canThrow = true;
 				}
