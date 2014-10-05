@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
 			if (Input.GetKeyDown (KeyCode.Space) && !hasJumped) 
 			{				
 				hasJumped = true;
-				rigidbody.AddForce (new Vector3 (0, jumpSpeed, 0));
+				rigidbody2D.AddForce (new Vector3 (0, jumpSpeed, 0));
 			}
 			anim.SetBool ("HasJumped", hasJumped);
 
@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
 //				Destroy(newGun.GetComponent("BoxCollider"));			
 //				
 //				newGun.transform.parent = transform.GetChild(4).GetChild(0).GetChild(0);
-//				newGun.rigidbody.isKinematic = true;
+//				newGun.rigidbody2D.isKinematic = true;
 //				canThrow = true;
 //			}
 //		}
@@ -78,9 +78,9 @@ public class Movement : MonoBehaviour
 	// Update is called once per frame
 		void FixedUpdate ()
 		{
-			velocity = rigidbody.velocity;
+			velocity = rigidbody2D.velocity;
 			velocity.x = (float)(Input.GetAxis ("Horizontal") * moveSpeed);
-			rigidbody.velocity = velocity;
+			rigidbody2D.velocity = velocity;
 
 			if ((velocity.x > 0.1 || velocity.x < 0.1) && !isRunning) 
 			{
@@ -98,7 +98,7 @@ public class Movement : MonoBehaviour
 			v3.z = 10.0f;
 			v3 = Camera.main.ScreenToWorldPoint (v3);
 
-			if (v3.x < rigidbody.position.x) 
+			if (v3.x < rigidbody2D.position.x) 
 			{
 				Vector3 scale = transform.localScale;
 				scale.x = 1f;
@@ -114,7 +114,7 @@ public class Movement : MonoBehaviour
 			}
 		}
 
-		void OnCollisionEnter (Collision col)
+		void OnCollisionEnter2D (Collision2D col)
 		{			
 			hasJumped = false;			
 		}

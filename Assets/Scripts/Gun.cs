@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
 	private float timer = 30f;
 	private bool collided = false;
 	public Vector3 tempScale;
-	public Movement moveSpeed;
+
 	public int ammo;
 	public int maxAmmo;
 
@@ -23,12 +23,10 @@ public class Gun : MonoBehaviour
 
 	public void Throw (bool isRight, float playerSpeed, Quaternion gunRot) 
 	{
-//		transform.parent.DetachChildren();
-//
 		if (ammo > 0) 
 		{
 			GameObject newGun = (GameObject)Instantiate (GameObject.Find (name));
-			newGun.AddComponent ("BoxCollider");
+			newGun.AddComponent ("BoxCollider2D");
 			if (!isRight) 
 			{
 				newGun.transform.localScale = new Vector3 (-tempScale.x, -tempScale.y, tempScale.z);
@@ -38,17 +36,17 @@ public class Gun : MonoBehaviour
 				newGun.transform.localScale = new Vector3 (-tempScale.x, tempScale.y, tempScale.z);
 			}
 			newGun.transform.rotation = gunRot;
-			newGun.rigidbody.isKinematic = false;
+			newGun.rigidbody2D.isKinematic = false;
 			newGun.transform.position = transform.position;
 			Vector3 sp = Camera.main.WorldToScreenPoint (newGun.transform.position); // get gun position in screen space (where the mouse is)
 			Vector3 dir = (Input.mousePosition - sp).normalized; // the direction we want the gun to go is the mousePosition minus the gun position normalized
-			newGun.rigidbody.AddForce (dir * (velocity.x + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
-			newGun.rigidbody.AddTorque (0, 0, velocity.x); //rotate the gun in relation to how hard the player throws it
+			newGun.rigidbody2D.AddForce (dir * (velocity.x + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
+			newGun.rigidbody2D.AddTorque(velocity.x); //rotate the gun in relation to how hard the player throws it
 			ammo -= 1;
 			renderer.enabled = false;
 		}
 	}
-	void OnCollisionEnter(Collision col)
+	void OnCollisionEnter2D(Collision2D col)
 	{
 		if(!collided)
 		{
