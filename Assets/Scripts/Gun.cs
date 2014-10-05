@@ -41,7 +41,7 @@ public class Gun : MonoBehaviour
 			Vector3 sp = Camera.main.WorldToScreenPoint (newGun.transform.position); // get gun position in screen space (where the mouse is)
 			Vector3 dir = (Input.mousePosition - sp).normalized; // the direction we want the gun to go is the mousePosition minus the gun position normalized
 			newGun.rigidbody2D.AddForce (dir * (velocity.x + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
-			newGun.rigidbody2D.AddTorque(velocity.x); //rotate the gun in relation to how hard the player throws it
+			newGun.rigidbody2D.AddTorque(100); //rotate the gun in relation to how hard the player throws it
 			ammo -= 1;
 			renderer.enabled = false;
 		}
@@ -50,6 +50,7 @@ public class Gun : MonoBehaviour
 	{
 		if(!collided)
 		{
+			velocity.x = 0f;
 			collided = true;
 		}
 	}
