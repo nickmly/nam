@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour
 			}
 			anim.SetBool ("HasJumped", hasJumped);
 
+		anim.SetBool ("isThrowing", Input.GetKey (KeyCode.Mouse0));
+
 			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
 			{				
 				gun.Throw (facingRight, velocity.x, gun.transform.rotation);
