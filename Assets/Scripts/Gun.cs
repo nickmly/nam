@@ -19,7 +19,8 @@ public class Gun : MonoBehaviour
 
 	public Sprite sprite;
 	public string gunType;
-
+	public float fireRate;
+	public float maxFireRate;
 
 	void Start()
 	{
@@ -85,14 +86,24 @@ public class Gun : MonoBehaviour
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
 				transform.localScale = scale;
+				isAutomatic = false;
+				twoHanded = false;
+				fireRate = 0.5f;
+				ammo = 5;				
 				break;
 			case "AR":
 				scale = transform.localScale;
 				scale.x = -0.2712036f;
 				scale.y = 0.2712047f;
 				transform.localScale = scale;
+				isAutomatic = true;
+				twoHanded = true;
+				fireRate = 0.2f;
+				ammo = 20;
 				break;
 		}
+		maxAmmo = ammo;
+		maxFireRate = fireRate;
 	}
 
 	// Update is called once per frame

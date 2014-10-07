@@ -12,12 +12,12 @@ public class Movement : MonoBehaviour
 	public bool isRunning = false;
 	public bool facingRight = true;
 
-	public Gun gun;		
+	//public Gun gun;		
 	public GameObject gunObject;
 	public Transform gunTransform;
 	public bool canThrow = true;
 	//public string currentGun = "Pistol";
-	private float gunTimer = 0.5f;
+	
 	private float throwTimer = 0.35f;
 	private bool thrown = false;
 		// Use this for initialization
@@ -40,19 +40,31 @@ public class Movement : MonoBehaviour
 			}
 			anim.SetBool ("HasJumped", hasJumped);
 
+			
+		if(gunObject.GetComponent<Gun>().isAutomatic)
+		{
+			anim.SetBool ("isThrowing", Input.GetKey(KeyCode.Mouse0));
+			if (Input.GetKey (KeyCode.Mouse0) && canThrow) 
+			{				
+				thrown = true;
+				canThrow = false;
+			}	
+		}
+		else
+		{
 			anim.SetBool ("isThrowing", Input.GetKeyDown (KeyCode.Mouse0));
-
 			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
 			{				
 				thrown = true;
 				canThrow = false;
 			}	
+		}
 
 			if(!canThrow)
 			{
-				if (gunTimer > 0f)
+				if (gunObject.GetComponent<Gun>().fireRate > 0f)
 				{
-					gunTimer -= Time.deltaTime;
+					gunObject.GetComponent<Gun>().fireRate -= Time.deltaTime;
 				}
 				else
 				{
@@ -60,7 +72,7 @@ public class Movement : MonoBehaviour
 					{
 						gunObject.renderer.enabled = true;
 					}
-					gunTimer = 0.5f;
+					gunObject.GetComponent<Gun>().fireRate = gunObject.GetComponent<Gun>().maxFireRate;
 					canThrow = true;
 				}
 			}
