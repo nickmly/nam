@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 723f6f482322f46ef8f9231063307c99
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: M4 Assault Rifle
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

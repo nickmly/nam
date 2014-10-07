@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
 	public bool facingRight = true;
 
 	public Gun gun;		
+	public GameObject gunObject;
 	public Transform gunTransform;
 	public bool canThrow = true;
 	public string currentGun = "Pistol";
@@ -22,7 +23,8 @@ public class Movement : MonoBehaviour
 		// Use this for initialization
 		void Start ()
 		{	
-			gun = (Gun)GameObject.Find (currentGun).GetComponent("Gun");
+			//gun = (Gun)GameObject.Find (currentGun).GetComponent("Gun");
+			gunObject = GameObject.Find (currentGun);
 			gunTransform = (Transform)GameObject.Find (currentGun).GetComponent("Transform");
 			anim = GetComponent<Animator> ();
 		}
@@ -52,9 +54,9 @@ public class Movement : MonoBehaviour
 				}
 				else
 				{
-					if(gun.ammo > 0)
+					if(gunObject.GetComponent<Gun>().ammo > 0)
 					{
-						gun.renderer.enabled = true;
+						gunObject.renderer.enabled = true;
 					}
 					gunTimer = 0.5f;
 					canThrow = true;
@@ -69,30 +71,14 @@ public class Movement : MonoBehaviour
 				}
 				else
 				{
-					gun.Throw (facingRight, velocity.x, gun.transform.rotation);
+					gunObject.GetComponent<Gun>().Throw (facingRight, velocity.x, gunObject.transform.rotation);
 					throwTimer = 0.35f;
 					thrown = false;
 				}
 			}
 
 		}
-
-//		public void GetNewGun()
-//		{
-//			if(!canThrow)
-//			{			
-//				GameObject newGun = (GameObject)Instantiate(GameObject.Find(name));
-//				
-//				gun = (Gun)newGun.GetComponent("Gun");
-//				gunTransform = (Transform)newGun.GetComponent("Transform");
-//				Destroy(newGun.GetComponent("BoxCollider"));			
-//				
-//				newGun.transform.parent = transform.GetChild(4).GetChild(0).GetChild(0);
-//				newGun.rigidbody2D.isKinematic = true;
-//				canThrow = true;
-//			}
-//		}
-
+	
 	// Update is called once per frame
 		void FixedUpdate ()
 		{
