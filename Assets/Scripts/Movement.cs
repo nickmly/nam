@@ -16,21 +16,23 @@ public class Movement : MonoBehaviour
 	public GameObject gunObject;
 	public Transform gunTransform;
 	public bool canThrow = true;
-	public string currentGun = "Pistol";
+	//public string currentGun = "Pistol";
 	private float gunTimer = 0.5f;
-	public float throwTimer = 0.35f;
-	public bool thrown = false;
+	private float throwTimer = 0.35f;
+	private bool thrown = false;
 		// Use this for initialization
 		void Start ()
 		{	
 			//gun = (Gun)GameObject.Find (currentGun).GetComponent("Gun");
-			gunObject = GameObject.Find (currentGun);
-			gunTransform = (Transform)GameObject.Find (currentGun).GetComponent("Transform");
+			//gunObject = GameObject.Find ("gunPrefab");
+			//gunTransform = (Transform)GameObject.Find (currentGun).GetComponent("Transform");
 			anim = GetComponent<Animator> ();
 		}
 
 		void Update ()
 		{
+
+
 			if (Input.GetKeyDown (KeyCode.Space) && !hasJumped) 
 			{				
 				hasJumped = true;

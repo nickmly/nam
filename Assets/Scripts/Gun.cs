@@ -17,8 +17,13 @@ public class Gun : MonoBehaviour
 	public bool isAutomatic = false;
 	public bool twoHanded = false;
 
+	public Sprite sprite;
+	public string gunType;
+
+
 	void Start()
 	{
+		GetNewGun();
 		tempScale = transform.localScale;
 		arm = (Transform)GameObject.Find ("RightArm").GetComponent("Transform");
 		player = (Movement)GameObject.Find ("Body").GetComponent("Movement");
@@ -26,6 +31,7 @@ public class Gun : MonoBehaviour
 
 	public void Throw (bool isRight, float playerSpeed, Quaternion gunRot) 
 	{
+
 		if (ammo > 0) 
 		{
 			GameObject newGun = (GameObject)Instantiate (GameObject.Find (name));
@@ -66,10 +72,43 @@ public class Gun : MonoBehaviour
 			collided = true;
 		}
 	}
-	
+
+	public void GetNewGun()
+	{
+		sprite = Resources.Load<Sprite> ("Weapons/Modern/" + gunType);
+		gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+		Vector3 scale;
+		switch(gunType)
+		{
+			case "Pistol":
+				scale = transform.localScale;
+				scale.x = -0.07364167f;
+				scale.y = 0.07363904f;
+				transform.localScale = scale;
+				break;
+			case "AR":
+				scale = transform.localScale;
+				scale.x = -0.2712036f;
+				scale.y = 0.2712047f;
+				transform.localScale = scale;
+				break;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () 
 	{
+
+		if (Input.GetKeyDown (KeyCode.Alpha1))
+		{
+			gunType = "Pistol";
+			GetNewGun();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha2))
+		{
+			gunType = "AR";
+			GetNewGun();
+		}
 		if (Input.GetKeyDown (KeyCode.R)) 
 		{
 			ammo = maxAmmo;
