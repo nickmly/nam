@@ -14,6 +14,8 @@ public class Gun : MonoBehaviour
 	public int ammo;
 	public int maxAmmo;
 
+	public bool isAutomatic = false;
+	public bool twoHanded = false;
 
 	void Start()
 	{
