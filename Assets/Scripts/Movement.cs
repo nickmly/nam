@@ -4,19 +4,21 @@ using System.Collections;
 public class Movement : MonoBehaviour
 {
 
-		public Vector2 velocity;
-		public float moveSpeed = 5f;
-		public float jumpSpeed = 300f;
-		public bool hasJumped = false;
-		Animator anim;
-		public bool isRunning = false;
-		public bool facingRight = true;
-		
-		public Gun gun;		
-		public Transform gunTransform;
-		public bool canThrow = true;
-		public string currentGun = "Pistol";
-		private float gunTimer = 0.5f;
+	public Vector2 velocity;
+	public float moveSpeed = 5f;
+	public float jumpSpeed = 300f;
+	public bool hasJumped = false;
+	Animator anim;
+	public bool isRunning = false;
+	public bool facingRight = true;
+
+	public Gun gun;		
+	public Transform gunTransform;
+	public bool canThrow = true;
+	public string currentGun = "Pistol";
+	private float gunTimer = 0.5f;
+	public float throwTimer = 0.35f;
+	public bool thrown = false;
 		// Use this for initialization
 		void Start ()
 		{	
@@ -34,11 +36,11 @@ public class Movement : MonoBehaviour
 			}
 			anim.SetBool ("HasJumped", hasJumped);
 
-		anim.SetBool ("isThrowing", Input.GetKey (KeyCode.Mouse0));
+			anim.SetBool ("isThrowing", Input.GetKeyDown (KeyCode.Mouse0));
 
 			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
 			{				
-				gun.Throw (facingRight, velocity.x, gun.transform.rotation);
+				thrown = true;
 				canThrow = false;
 			}	
 
@@ -56,6 +58,20 @@ public class Movement : MonoBehaviour
 					}
 					gunTimer = 0.5f;
 					canThrow = true;
+				}
+			}
+
+			if (thrown) 
+			{
+				if(throwTimer > 0)
+				{
+					throwTimer -= Time.deltaTime;
+				}
+				else
+				{
+					gun.Throw (facingRight, velocity.x, gun.transform.rotation);
+					throwTimer = 0.35f;
+					thrown = false;
 				}
 			}
 
