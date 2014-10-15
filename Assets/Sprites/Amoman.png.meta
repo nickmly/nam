@@ -1,0 +1,289 @@
+fileFormatVersion: 2
+guid: 81e39147154f146f29c97060ae2a8f78
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Amoman_0
+    21300002: Amoman_1
+    21300004: Amoman_2
+    21300006: Amoman_3
+    21300008: Amoman_4
+    21300010: Amoman_5
+    21300012: Amoman_6
+    21300014: Amoman_7
+    21300016: Amoman_8
+    21300018: Amoman_9
+    21300020: Amoman_10
+    21300022: Amoman_11
+    21300024: Amoman_12
+    21300026: Amoman_13
+    21300028: Amoman_14
+    21300030: Amoman_15
+    21300032: Amoman_16
+    21300034: Amoman_17
+    21300036: Amoman_18
+    21300038: Amoman_19
+    21300040: Amoman_20
+    21300042: Amoman_21
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Amoman_0
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 800
+        width: 90
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_1
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 714
+        width: 109
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_2
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 709
+        width: 100
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_3
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 708
+        width: 64
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_4
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 634
+        width: 71
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_5
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 623
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_6
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 623
+        width: 100
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_7
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 565
+        width: 68
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_8
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 460
+        width: 93
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_9
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 524
+        width: 65
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_10
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 532
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_11
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 404
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_12
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 368
+        width: 107
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_13
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 279
+        width: 65
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_14
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 369
+        width: 82
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_15
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 264
+        width: 122
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_16
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 308
+        width: 164
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_17
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 176
+        width: 64
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_18
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 200
+        width: 94
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_19
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 203
+        width: 72
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_20
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 124
+        width: 53
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Amoman_21
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 8
+        width: 178
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
