@@ -35,9 +35,9 @@ public class Gun : MonoBehaviour
 
 		if (ammo > 0) 
 		{
-			GameObject newGun = (GameObject)Instantiate (GameObject.Find (name));
+			GameObject newGun = (GameObject)Instantiate (GameObject.Find ("GunPrefab"));
 			newGun.AddComponent ("BoxCollider2D");
-
+			
 
 			if (!isRight) 
 			{
@@ -75,27 +75,9 @@ public class Gun : MonoBehaviour
 					newGun.rigidbody2D.AddForce (dir * (velocity.x * 1.5f + playerSpeed));// throw the gun in the direction specified with a speed plus the player's current speed
 				}
 			}
-			newGun.rigidbody2D.AddTorque(Random.Range(50,150)); //rotate the gun randomly
-			ammo -= 1;
-			renderer.enabled = false;
-		}
-	}
-	void OnCollisionEnter2D(Collision2D col)
-	{
-		if(!collided)
-		{
-			rigidbody2D.drag = 20;
-			collided = true;
-		}
-	}
-
-	public void GetNewGun()
-	{
-		sprite = Resources.Load<Sprite> ("Weapons/Modern/" + gunType);
-		gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
-		Vector3 scale;
-		switch(gunType)
-		{
+			Vector3 scale;
+			switch(gunType)
+			{
 			case "Pistol":
 				scale = transform.localScale;
 				scale.x = -0.07364167f;
@@ -116,9 +98,57 @@ public class Gun : MonoBehaviour
 				fireRate = 0.2f;
 				ammo = 20;
 				break;
+			}
+			maxAmmo = ammo;
+			maxFireRate = fireRate;
+			newGun.rigidbody2D.AddTorque(Random.Range(50,150)); //rotate the gun randomly
+			ammo -= 1;
+			renderer.enabled = false;
 		}
-		maxAmmo = ammo;
-		maxFireRate = fireRate;
+	}
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if(!collided)
+		{
+			gameObject.tag = "Untagged";
+			rigidbody2D.drag = 20;
+			collided = true;
+		}
+	}
+	
+	public void GetNewGun()
+	{
+		if(gameObject.tag == "Player")
+		{
+			sprite = Resources.Load<Sprite> ("Weapons/Modern/" + gunType);
+			gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+			Vector3 scale;
+			switch(gunType)
+			{
+				case "Pistol":
+					scale = transform.localScale;
+					scale.x = -0.07364167f;
+					scale.y = 0.07363904f;
+					transform.localScale = scale;
+					isAutomatic = false;
+					twoHanded = false;
+					fireRate = 0.5f;
+					ammo = 5;				
+					break;
+				case "AR":
+					scale = transform.localScale;
+					scale.x = -0.2712036f;
+					scale.y = 0.2712047f;
+					transform.localScale = scale;
+					isAutomatic = true;
+					twoHanded = true;
+					fireRate = 0.2f;
+					ammo = 20;
+					break;
+			}
+			maxAmmo = ammo;
+			maxFireRate = fireRate;
+		}
 	}
 
 	// Update is called once per frame

@@ -20,6 +20,8 @@ public class Movement : MonoBehaviour
 	
 	private float throwTimer = 0.35f;
 	private bool thrown = false;
+	
+	
 		// Use this for initialization
 		void Start ()
 		{	
