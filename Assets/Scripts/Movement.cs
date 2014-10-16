@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
 	public bool canThrow = true;
 	//public string currentGun = "Pistol";
 	
-	private float throwTimer = 0.35f;
+	
 	private bool thrown = false;
 	
 	
@@ -81,14 +81,14 @@ public class Movement : MonoBehaviour
 
 			if (thrown) 
 			{
-				if(throwTimer > 0)
+				if(gunObject.GetComponent<Gun>().throwTimer > 0)
 				{
-					throwTimer -= Time.deltaTime;
+					gunObject.GetComponent<Gun>().throwTimer -= Time.deltaTime;
 				}
 				else
 				{
 					gunObject.GetComponent<Gun>().Throw (facingRight, velocity.x, gunObject.transform.rotation);
-					throwTimer = 0.35f;
+					gunObject.GetComponent<Gun>().throwTimer = gunObject.GetComponent<Gun>().maxThrowTime;
 					thrown = false;
 				}
 			}

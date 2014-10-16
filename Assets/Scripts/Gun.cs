@@ -21,6 +21,8 @@ public class Gun : MonoBehaviour
 	public string gunType;
 	public float fireRate;
 	public float maxFireRate;
+	public float throwTimer;
+	public float maxThrowTime;
 
 	void Start()
 	{
@@ -82,25 +84,16 @@ public class Gun : MonoBehaviour
 				scale = transform.localScale;
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
-				transform.localScale = scale;
-				isAutomatic = false;
-				twoHanded = false;
-				fireRate = 0.5f;
-				ammo = 5;				
+				transform.localScale = scale;					
 				break;
 			case "AR":
 				scale = transform.localScale;
 				scale.x = -0.2712036f;
 				scale.y = 0.2712047f;
 				transform.localScale = scale;
-				isAutomatic = true;
-				twoHanded = true;
-				fireRate = 0.2f;
-				ammo = 20;
 				break;
 			}
-			maxAmmo = ammo;
-			maxFireRate = fireRate;
+
 			newGun.rigidbody2D.AddTorque(Random.Range(50,150)); //rotate the gun randomly
 			ammo -= 1;
 			renderer.enabled = false;
@@ -125,29 +118,34 @@ public class Gun : MonoBehaviour
 			Vector3 scale;
 			switch(gunType)
 			{
-				case "Pistol":
-					scale = transform.localScale;
-					scale.x = -0.07364167f;
-					scale.y = 0.07363904f;
-					transform.localScale = scale;
-					isAutomatic = false;
-					twoHanded = false;
-					fireRate = 0.5f;
-					ammo = 5;				
-					break;
-				case "AR":
-					scale = transform.localScale;
-					scale.x = -0.2712036f;
-					scale.y = 0.2712047f;
-					transform.localScale = scale;
-					isAutomatic = true;
-					twoHanded = true;
-					fireRate = 0.2f;
-					ammo = 20;
-					break;
+			case "Pistol":
+				velocity.x = 1200f;
+				scale = transform.localScale;
+				scale.x = -0.07364167f;
+				scale.y = 0.07363904f;
+				transform.localScale = scale;
+				isAutomatic = false;
+				twoHanded = false;
+				fireRate = 0.5f;
+				ammo = 5;		
+				throwTimer = 0.25f;						
+				break;
+			case "AR":
+				velocity.x = 1600f;
+				scale = transform.localScale;
+				scale.x = -0.2712036f;
+				scale.y = 0.2712047f;
+				transform.localScale = scale;
+				isAutomatic = true;
+				twoHanded = true;
+				fireRate = 0.2f;
+				ammo = 20;
+				throwTimer = 0.1f;
+				break;
 			}
 			maxAmmo = ammo;
 			maxFireRate = fireRate;
+			maxThrowTime = throwTimer;
 		}
 	}
 
