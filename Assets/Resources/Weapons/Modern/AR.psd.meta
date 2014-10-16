@@ -3,6 +3,7 @@ guid: 723f6f482322f46ef8f9231063307c99
 TextureImporter:
   fileIDToRecycleName:
     21300000: M4 Assault Rifle
+    21300002: AR
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

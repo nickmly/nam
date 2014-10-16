@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
 			
 		if(gunObject.GetComponent<Gun>().isAutomatic)
 		{
-			anim.SetBool ("isThrowing", Input.GetKey(KeyCode.Mouse0));
+			anim.SetBool ("AutoThrow", Input.GetKey(KeyCode.Mouse0));
 			if (Input.GetKey (KeyCode.Mouse0) && canThrow) 
 			{				
 				thrown = true;

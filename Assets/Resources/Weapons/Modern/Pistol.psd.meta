@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 48be1a75ed1234869aacd7480a24bff3
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Pistol
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
