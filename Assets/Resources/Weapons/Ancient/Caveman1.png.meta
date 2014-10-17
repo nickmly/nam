@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 69a0b4413644ef94998fd230df0f4a95
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Caveman1_0
+    21300002: Caveman1_1
+    21300004: Caveman1_2
+    21300006: Caveman1_3
+    21300008: Caveman1_4
+    21300010: Caveman1_5
+    21300012: Caveman1_6
+    21300014: Caveman1_7
+    21300016: Caveman1_8
+    21300018: Caveman1_9
+    21300020: Caveman1_10
+    21300022: Caveman1_11
+    21300024: Caveman1_12
+    21300026: Caveman1_13
+    21300028: Caveman1_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Caveman1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1979
+        width: 553
+        height: 572
+      alignment: 9
+      pivot: {x: .434676945, y: .0725014433}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_1
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 1750
+        width: 580
+        height: 688
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_2
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 2091
+        width: 281
+        height: 372
+      alignment: 9
+      pivot: {x: .549444556, y: .664334834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_3
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 878
+        width: 302
+        height: 386
+      alignment: 9
+      pivot: {x: .527603447, y: .859940767}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_4
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 1175
+        width: 234
+        height: 376
+      alignment: 9
+      pivot: {x: .464375019, y: .714318156}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_5
+      rect:
+        serializedVersion: 2
+        x: 1534
+        y: 1095
+        width: 169
+        height: 336
+      alignment: 9
+      pivot: {x: .567470908, y: .877538383}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_6
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 529
+        width: 160
+        height: 369
+      alignment: 9
+      pivot: {x: .482633203, y: .771097004}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_7
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 721
+        width: 150
+        height: 160
+      alignment: 9
+      pivot: {x: .777874351, y: .67367208}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_8
+      rect:
+        serializedVersion: 2
+        x: 1459
+        y: 514
+        width: 152
+        height: 359
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_9
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 460
+        width: 282
+        height: 122
+      alignment: 9
+      pivot: {x: .815318227, y: .796096027}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 147
+        height: 158
+      alignment: 9
+      pivot: {x: .745739102, y: .711043596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_11
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 0
+        width: 169
+        height: 333
+      alignment: 9
+      pivot: {x: .450673491, y: .70861423}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_12
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 21
+        width: 217
+        height: 376
+      alignment: 9
+      pivot: {x: .5, y: .706927955}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_13
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 93
+        width: 261
+        height: 127
+      alignment: 9
+      pivot: {x: .819395781, y: .762558103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Caveman1_14
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 0
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
