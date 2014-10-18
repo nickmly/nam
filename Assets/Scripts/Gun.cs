@@ -18,6 +18,10 @@ public class Gun : MonoBehaviour
 	public bool isAutomatic = false;
 	public bool twoHanded = false;
 
+	public EnemyHealth Enemyhealth;
+
+	public int playerdamage;
+
 	public Sprite sprite;
 	public string gunType;
 	public float fireRate;
@@ -105,8 +109,10 @@ public class Gun : MonoBehaviour
 	{
 		if(col.gameObject.tag == "Enemy")
 		   {
+
 			Destroy(gameObject);
-			//Player Damage();
+			Enemyhealth.Health -= playerdamage;
+
 		}
 		if(!collided)
 		{
@@ -126,7 +132,7 @@ public class Gun : MonoBehaviour
 			switch(gunType)
 			{
 			case "Pistol":
-				velocity.x = 1200f;
+				velocity.x = 2000f;
 				scale = transform.localScale;
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
@@ -135,10 +141,11 @@ public class Gun : MonoBehaviour
 				twoHanded = false;
 				fireRate = 0.5f;
 				ammo = 5;		
-				throwTimer = 0.25f;						
+				throwTimer = 0.25f;		
+				playerdamage = 10;
 				break;
 			case "AR":
-				velocity.x = 1600f;
+				velocity.x = 2000f;
 				scale = transform.localScale;
 				scale.x = -0.2712036f;
 				scale.y = 0.2712047f;
@@ -148,6 +155,7 @@ public class Gun : MonoBehaviour
 				fireRate = 0.2f;
 				ammo = 20;
 				throwTimer = 0.1f;
+				playerdamage = 5;
 				break;
 			}
 			maxAmmo = ammo;
