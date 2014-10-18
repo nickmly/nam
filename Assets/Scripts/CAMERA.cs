@@ -55,6 +55,7 @@ public class CAMERA : MonoBehaviour {
 	void Update () 
 	{
 
+	
 		Vector3 cam = transform.position;
 		Vector3 player = target.transform.position;
 		cam.x = player.x;
@@ -69,6 +70,7 @@ public class CAMERA : MonoBehaviour {
 			stophere.y = transform.position.y;
 			stophere.z = transform.position.z;
 			transform.position = stophere;
+		
 		} 
 		if (target.transform.position.x < -52) 
 		{
@@ -82,6 +84,7 @@ public class CAMERA : MonoBehaviour {
 			stoplol.y = transform.position.y;
 			stoplol.z = transform.position.z;
 			transform.position = stoplol;
+
 		}
 		if (target.transform.position.x < 52 || target.transform.position.x > -52) {
 			if (target) {
@@ -89,6 +92,8 @@ public class CAMERA : MonoBehaviour {
 				float y = IncrementTowards(transform.position.y, target.position.y, trackSpeed);
 				transform.position = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 			}
+		}
+		else{
 		}
 
 	
