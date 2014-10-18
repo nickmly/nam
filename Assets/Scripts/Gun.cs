@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
 
 	private float timer = 30f;
 	private bool collided = false;
+	private bool hitenemy = false;
 	public Vector3 tempScale;
 
 	public int ammo;
@@ -23,6 +24,7 @@ public class Gun : MonoBehaviour
 	public float maxFireRate;
 	public float throwTimer;
 	public float maxThrowTime;
+	public GameObject newGun;
 
 	void Start()
 	{
@@ -37,7 +39,7 @@ public class Gun : MonoBehaviour
 
 		if (ammo > 0) 
 		{
-			GameObject newGun = (GameObject)Instantiate (GameObject.Find ("GunPrefab"));
+			newGun = (GameObject)Instantiate (GameObject.Find ("GunPrefab"));
 			newGun.AddComponent ("BoxCollider2D");
 			
 
@@ -101,10 +103,15 @@ public class Gun : MonoBehaviour
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
+		if(col.gameObject.tag == "Enemy")
+		   {
+			Destroy(gameObject);
+			//Player Damage();
+		}
 		if(!collided)
 		{
 			gameObject.tag = "Untagged";
-			rigidbody2D.drag = 20;
+			//rigidbody2D.drag = 20;
 			collided = true;
 		}
 	}
@@ -174,6 +181,8 @@ public class Gun : MonoBehaviour
 
 		if (collided)
 		{
+
+
 			if(timer > 0f)
 			{
 				timer -= Time.deltaTime;
