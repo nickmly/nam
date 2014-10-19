@@ -3,17 +3,17 @@ using System.Collections;
 
 public class EnemyHealth : MonoBehaviour {
 
-	public int Health;
+	public int health;
 	public Gun gun;
-	public Transform Player;
+	public Transform player;
 	public Vector2 speed;
 	public float speedx = 10;
 
 
 	// Use this for initialization
 	void Start () {
-		Health = 100;
-		Player = GameObject.FindGameObjectWithTag("Player").transform;
+		health = 100;
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
@@ -22,13 +22,13 @@ public class EnemyHealth : MonoBehaviour {
 	
 		speed.x = speedx;
 	
-		if(Player.position.x > rigidbody2D.position.x)
+		if(player.position.x > rigidbody2D.position.x)
 		{
 			speed.x *= 1;
 		
 		}
 
-		if(Player.position.x < rigidbody2D.position.x)
+		if(player.position.x < rigidbody2D.position.x)
 		{
 			speed.x *= -1;
 
@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour {
 	
 		rigidbody2D.AddForce(speed);
 		Vector3 scale;
-		if(Player.position.x < transform.position.x)
+		if(player.position.x < transform.position.x)
 		{
 			scale = transform.localScale;
 			scale.x = 0.3289828f;
@@ -44,7 +44,7 @@ public class EnemyHealth : MonoBehaviour {
 		
 		}
 		else
-			if(Player.position.x > transform.position.x)
+			if(player.position.x > transform.position.x)
 		{
 			scale = transform.localScale;
 			scale.x = -0.3289828f;
@@ -53,7 +53,7 @@ public class EnemyHealth : MonoBehaviour {
 
 
 
-		if(Health == 0 || Health < 0)
+		if(health <= 0)
 		{
 			//anim.SetBool("isDead", true);
 			Destroy (gameObject);

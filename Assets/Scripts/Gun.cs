@@ -107,24 +107,26 @@ public class Gun : MonoBehaviour
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		if(col.gameObject.tag == "Floor")
-		{
-			playerdamage = 0;
-			gameObject.layer = 9;
-		}
 		
-		if(col.gameObject.tag == "Enemy" && col.gameObject.tag != "GroundedGun")
+		
+		if(col.gameObject.tag == "Enemy" && !collided)
 		   {
 
 			Destroy(gameObject);
-			Enemyhealth.Health -= playerdamage;
+			Enemyhealth.health -= playerdamage;
 
 		}
 		if(!collided)
 		{
+			
 			gameObject.tag = "Untagged";
 			rigidbody2D.drag = 20;
 			collided = true;
+			if(col.gameObject.tag == "Floor")
+			{
+				playerdamage = 0;
+				gameObject.layer = 9;
+			}
 		}
 	}
 	
@@ -138,7 +140,7 @@ public class Gun : MonoBehaviour
 			switch(gunType)
 			{
 			case "Pistol":
-				velocity.x = 2500f;
+				velocity.x = 2000f;
 				scale = transform.localScale;
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
