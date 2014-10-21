@@ -8,7 +8,9 @@ public class EnemyHealth : MonoBehaviour {
 	public Transform player;
 	public Vector2 speed;
 	public float speedx = 10;
-
+	public bool isDead = false;
+	Animator anim;
+	public float DeathTimer = 5;
 
 	// Use this for initialization
 	void Start () {
@@ -22,19 +24,25 @@ public class EnemyHealth : MonoBehaviour {
 	
 		speed.x = speedx;
 	
-		if(player.position.x > rigidbody2D.position.x)
+		if(player.position.x > rigidbody2D.position.x +1)
 		{
 			speed.x *= 1;
 		
 		}
 
-		if(player.position.x < rigidbody2D.position.x)
+		if(player.position.x < rigidbody2D.position.x - 1f)
 		{
 			speed.x *= -1;
 
 		}
 	
+		if(player.position.x == rigidbody2D.position.x)
+		{
+		speed.x *= 0;
+		}
+		
 		rigidbody2D.AddForce(speed);
+		
 		Vector3 scale;
 		if(player.position.x < transform.position.x)
 		{
@@ -52,11 +60,20 @@ public class EnemyHealth : MonoBehaviour {
 		}   
 
 
-
 		if(health <= 0)
 		{
-			//anim.SetBool("isDead", true);
-			Destroy (gameObject);
+		isDead = true;
+		
+		
+		if(DeathTimer > 0)
+		{
+		DeathTimer -= Time.deltaTime;
+		}
+		else
+		{
+		Destroy(gameObject);
+		}
+		
 		}
 
 	}

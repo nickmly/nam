@@ -102,7 +102,10 @@ public class Gun : MonoBehaviour
 
 			newGun.rigidbody2D.AddTorque(Random.Range(50,150)); //rotate the gun randomly
 			ammo -= 1;
+			if(ammo == 0)
+			{
 			renderer.enabled = false;
+			}
 		}
 	}
 	void OnCollisionEnter2D(Collision2D col)
@@ -169,6 +172,10 @@ public class Gun : MonoBehaviour
 			maxAmmo = ammo;
 			maxFireRate = fireRate;
 			maxThrowTime = throwTimer;
+			if(ammo ==0)
+			{
+			renderer.enabled = false;
+			}
 		}
 	}
 
