@@ -8,14 +8,15 @@ public class EnemyHealth : MonoBehaviour {
 	public Transform player;
 	public Vector2 speed;
 	public float speedx = 10;
-	public bool isDead = false;
 	Animator anim;
 	public float DeathTimer = 5;
+	public bool Dead;
 
 	// Use this for initialization
 	void Start () {
 		health = 100;
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+		Dead = false;
 	}
 	
 	// Update is called once per frame
@@ -62,8 +63,9 @@ public class EnemyHealth : MonoBehaviour {
 
 		if(health <= 0)
 		{
-		isDead = true;
-		
+		speedx = 0;
+		Dead = true;
+		gameObject.layer = 13; 
 		
 		if(DeathTimer > 0)
 		{

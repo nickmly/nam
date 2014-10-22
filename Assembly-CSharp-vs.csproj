@@ -48,7 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ArmScriptThough.cs" />
      <Compile Include="Assets\Scripts\CAMERA.cs" />
+     <Compile Include="Assets\Scripts\EnemyArmDead.cs" />
+     <Compile Include="Assets\Scripts\EnemyBodyDead.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\EnemyLegDead.cs" />
      <Compile Include="Assets\Scripts\Gun.cs" />
      <Compile Include="Assets\Scripts\HUD.cs" />
      <Compile Include="Assets\Scripts\LegScript.cs" />
