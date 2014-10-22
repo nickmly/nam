@@ -18,7 +18,7 @@ public class Gun : MonoBehaviour
 	public bool isAutomatic = false;
 	public bool twoHanded = false;
 
-	public EnemyHealth Enemyhealth;
+	
 
 	public int playerdamage;
 
@@ -116,7 +116,7 @@ public class Gun : MonoBehaviour
 		   {
 
 			Destroy(gameObject);
-			Enemyhealth.health -= playerdamage;
+			col.gameObject.GetComponent<EnemyHealth>().health -= playerdamage;
 
 		}
 		if(!collided)
@@ -153,7 +153,7 @@ public class Gun : MonoBehaviour
 				fireRate = 0.5f;
 				ammo = 5;		
 				throwTimer = 0.25f;		
-				playerdamage = 10;
+				playerdamage = 20;
 				break;
 			case "AR":
 				velocity.x = 2500f;
@@ -166,7 +166,7 @@ public class Gun : MonoBehaviour
 				fireRate = 0.2f;
 				ammo = 20;
 				throwTimer = 0.1f;
-				playerdamage = 5;
+				playerdamage = 35;
 				break;
 			}
 			maxAmmo = ammo;

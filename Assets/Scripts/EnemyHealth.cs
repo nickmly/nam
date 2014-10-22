@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyHealth : MonoBehaviour {
 
 	public int health;
-	public Gun gun;
+
 	public Transform player;
 	public Vector2 speed;
 	public float speedx = 10;
