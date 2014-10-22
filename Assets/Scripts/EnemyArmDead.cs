@@ -15,7 +15,7 @@ public class EnemyArmDead : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	if(enemy.GetComponent<EnemyHealth>().Dead)
+	if(enemy.GetComponent<EnemyHealth>().dead)
 	{
 	
 	anim.SetBool("isDead",true);

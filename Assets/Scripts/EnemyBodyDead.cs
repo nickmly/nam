@@ -16,7 +16,7 @@ public class EnemyBodyDead : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	if(enemy.GetComponent<EnemyHealth>().Dead == true)
+	if(enemy.GetComponent<EnemyHealth>().dead == true)
 	{
 	isDying = true;
 	}
