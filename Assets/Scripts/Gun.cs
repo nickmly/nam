@@ -99,11 +99,9 @@ public class Gun : MonoBehaviour
 				transform.localScale = scale;
 				break;
 			}
-			newGun.gameObject.layer = 12;
-			newGun.gameObject.tag = "Gun";
+
 			newGun.rigidbody2D.AddTorque(Random.Range(50,150)); //rotate the gun randomly
 			ammo -= 1;
-			
 			if(ammo == 0)
 			{
 			renderer.enabled = false;
@@ -116,8 +114,9 @@ public class Gun : MonoBehaviour
 		
 		if(col.gameObject.tag == "Enemy" && !collided)
 		   {
-			
+
 			Destroy(gameObject);
+			Enemyhealth.health -= playerdamage;
 
 		}
 		if(!collided)
@@ -126,7 +125,6 @@ public class Gun : MonoBehaviour
 			gameObject.tag = "Untagged";
 			rigidbody2D.drag = 20;
 			collided = true;
-			
 			if(col.gameObject.tag == "Floor")
 			{
 				playerdamage = 0;
