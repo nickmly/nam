@@ -33,7 +33,7 @@ public class Gun : MonoBehaviour
 	void Start()
 	{
 		GetNewGun();
-		tempScale = transform.localScale;
+		//tempScale = transform.localScale;
 		arm = (Transform)GameObject.Find ("RightArm").GetComponent("Transform");
 		player = (Movement)GameObject.Find ("Body").GetComponent("Movement");
 	}
@@ -90,18 +90,22 @@ public class Gun : MonoBehaviour
 				scale = transform.localScale;
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
-				transform.localScale = scale;					
+				tempScale = scale;
+				//transform.localScale = tempScale;		
 				break;
 			case "AR":
 				scale = transform.localScale;
 				scale.x = -0.2712036f;
 				scale.y = 0.2712047f;
-				transform.localScale = scale;
+				tempScale = scale;
+				//transform.localScale = tempScale;
 				break;
 			}
-
+			newGun.gameObject.layer = 12;
+			newGun.gameObject.tag = "Gun";
 			newGun.rigidbody2D.AddTorque(Random.Range(50,150)); //rotate the gun randomly
 			ammo -= 1;
+			
 			if(ammo == 0)
 			{
 			renderer.enabled = false;
@@ -114,9 +118,10 @@ public class Gun : MonoBehaviour
 		
 		if(col.gameObject.tag == "Enemy" && !collided)
 		   {
-
+			
 			Destroy(gameObject);
 			col.gameObject.GetComponent<EnemyHealth>().health -= playerdamage;
+
 
 		}
 		if(!collided)
@@ -125,6 +130,7 @@ public class Gun : MonoBehaviour
 			gameObject.tag = "Untagged";
 			rigidbody2D.drag = 20;
 			collided = true;
+			
 			if(col.gameObject.tag == "Floor")
 			{
 				playerdamage = 0;
@@ -142,25 +148,13 @@ public class Gun : MonoBehaviour
 			Vector3 scale;
 			switch(gunType)
 			{
-			case "Pistol":
-				velocity.x = 2000f;
-				scale = transform.localScale;
-				scale.x = -0.07364167f;
-				scale.y = 0.07363904f;
-				transform.localScale = scale;
-				isAutomatic = false;
-				twoHanded = false;
-				fireRate = 0.5f;
-				ammo = 5;		
-				throwTimer = 0.25f;		
-				playerdamage = 20;
-				break;
 			case "AR":
 				velocity.x = 2500f;
 				scale = transform.localScale;
 				scale.x = -0.2712036f;
 				scale.y = 0.2712047f;
-				transform.localScale = scale;
+				tempScale = scale;
+				//transform.localScale = tempScale;
 				isAutomatic = true;
 				twoHanded = true;
 				fireRate = 0.2f;
@@ -168,6 +162,21 @@ public class Gun : MonoBehaviour
 				throwTimer = 0.1f;
 				playerdamage = 35;
 				break;
+			case "Pistol":
+				velocity.x = 2000f;
+				scale = transform.localScale;
+				scale.x = -0.07364167f;
+				scale.y = 0.07363904f;
+				tempScale = scale;
+				//transform.localScale = tempScale;
+				isAutomatic = false;
+				twoHanded = false;
+				fireRate = 0.5f;
+				ammo = 5;		
+				throwTimer = 0.25f;		
+				playerdamage = 20;
+				break;
+
 			}
 			maxAmmo = ammo;
 			maxFireRate = fireRate;
@@ -187,11 +196,13 @@ public class Gun : MonoBehaviour
 		{
 			gunType = "Pistol";
 			GetNewGun();
+			transform.localScale = tempScale;
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha2))
 		{
 			gunType = "AR";
 			GetNewGun();
+			transform.localScale = tempScale;
 		}
 		if (Input.GetKeyDown (KeyCode.R)) 
 		{

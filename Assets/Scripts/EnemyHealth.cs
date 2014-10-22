@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour {
 
 	public int health;
 
+	//public Gun gun;
 	public Transform player;
 	public Vector2 speed;
 	public float speedx = 10;
@@ -14,13 +15,15 @@ public class EnemyHealth : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		health = 100;
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		health = 1;
+		//player = GameObject.FindGameObjectWithTag("Player").transform;
 		Dead = false;
 	}
 	
+	
 	// Update is called once per frame
 	void Update () {
+
 
 	
 		speed.x = speedx;
@@ -31,13 +34,13 @@ public class EnemyHealth : MonoBehaviour {
 		
 		}
 
-		if(player.position.x < rigidbody2D.position.x - 1f)
+		if(player.position.x < rigidbody2D.position.x - 1f && !Dead)
 		{
 			speed.x *= -1;
 
 		}
 	
-		if(player.position.x == rigidbody2D.position.x)
+		if(player.position.x == rigidbody2D.position.x && !Dead)
 		{
 		speed.x *= 0;
 		}
@@ -45,7 +48,7 @@ public class EnemyHealth : MonoBehaviour {
 		rigidbody2D.AddForce(speed);
 		
 		Vector3 scale;
-		if(player.position.x < transform.position.x)
+		if(player.position.x < transform.position.x && !Dead)
 		{
 			scale = transform.localScale;
 			scale.x = 0.3289828f;
@@ -53,7 +56,7 @@ public class EnemyHealth : MonoBehaviour {
 		
 		}
 		else
-			if(player.position.x > transform.position.x)
+			if(player.position.x > transform.position.x && !Dead)
 		{
 			scale = transform.localScale;
 			scale.x = -0.3289828f;
@@ -64,8 +67,10 @@ public class EnemyHealth : MonoBehaviour {
 		if(health <= 0)
 		{
 		speedx = 0;
+		speed.x = 0;
 		Dead = true;
-		gameObject.layer = 13; 
+		gameObject.layer = 13;
+		gameObject.tag = "DeadEnemy";
 		
 		if(DeathTimer > 0)
 		{
@@ -77,6 +82,15 @@ public class EnemyHealth : MonoBehaviour {
 		}
 		
 		}
-
+	}
+	
+	void OnCollisionEnter2D(Collision2D col)
+	{
+	
+		if(col.gameObject.tag == "Gun")
+		{
+			Debug.Log ("ouch");
+			health -= col.gameObject.GetComponent<Gun>().playerdamage;
+		}
 	}
 }
