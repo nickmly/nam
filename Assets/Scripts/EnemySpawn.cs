@@ -9,10 +9,25 @@ public class EnemySpawn : MonoBehaviour
 	public float spawnWait;
 	public float startWait;
 	public float waveWait;
+	private float leftSide = 1;
+	public int EnemyIterations;
 	
 	void Start ()
 	{
 		StartCoroutine (SpawnWaves ());
+	}
+	
+	void Update()
+	{
+	
+	if(gameObject.tag == "SpawnPoint1")
+	{
+	leftSide = -1;
+	}
+	else if(gameObject.tag == "SpawnPoint2")
+	{
+	leftSide = 1;
+	}
 	}
 	
 	IEnumerator SpawnWaves ()
@@ -20,12 +35,13 @@ public class EnemySpawn : MonoBehaviour
 		yield return new WaitForSeconds (startWait);
 		while (true)
 		{
-			for (int i = 0; i < enemyCount; i++)
+			while(EnemyIterations > 0)
 			{
-				Vector3 spawnPosition = new Vector3(68f,3f,1.57f);
+				Vector3 spawnPosition = new Vector3(68f * leftSide,3f,1.57f);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (enemy, spawnPosition, spawnRotation);
 				yield return new WaitForSeconds (spawnWait);
+				EnemyIterations--;
 			}
 			yield return new WaitForSeconds (waveWait);
 		}

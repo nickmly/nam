@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 	public int health;
 	public Transform player;
 	public Vector2 speed;
-	public float speedX = 10;
+	public float speedX;
 	Animator anim;
 	public float deathTimer = 5;
 	public bool dead;
@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
 		health = 100;
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		dead = false;
+		speedX = Random.Range(10,20);
 	}
 	
 	// Update is called once per frame
@@ -65,8 +66,7 @@ public class EnemyHealth : MonoBehaviour
 		if (health <= 0) 
 		{
 			speedX = 0;			
-			dead = true;
-			gameObject.layer = 9; 
+			dead = true; 
 			
 			if (deathTimer > 0) 
 			{

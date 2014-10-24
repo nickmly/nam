@@ -16,6 +16,11 @@ public class EnemyBodyDead : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		if(enemy.GetComponent<EnemyHealth>().health <= 0)
+		{
+		gameObject.layer = 9;
+		}
+	
 	if(enemy.GetComponent<EnemyHealth>().dead == true)
 	{
 	isDying = true;
@@ -24,4 +29,7 @@ public class EnemyBodyDead : MonoBehaviour {
 	anim.SetBool("isDead", isDying);
 	
 	}
+	
+	
+	
 }

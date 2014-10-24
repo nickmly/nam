@@ -210,7 +210,7 @@ TextureImporter:
         width: 122
         height: 210
       alignment: 9
-      pivot: {x: .37378031, y: .793309808}
+      pivot: {x: .292946726, y: .718705535}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Ammo-Man(Side)UnityVersion_15
       rect:
