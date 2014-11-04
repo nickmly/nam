@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		ammoText.text = "Ammo: " + gun.ammo.ToString ();
+		//ammoText.text = gun.ammo.ToString ();
 	}
 
 	void OnGUI()
