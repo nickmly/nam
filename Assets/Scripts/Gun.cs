@@ -9,7 +9,6 @@ public class Gun : MonoBehaviour
 
 	private float timer = 30f;
 	private bool collided = false;
-	private bool hitenemy = false;
 	public Vector3 tempScale;
 
 	public int ammo;
