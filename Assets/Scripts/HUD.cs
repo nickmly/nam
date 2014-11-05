@@ -4,7 +4,7 @@ using System.Collections;
 public class HUD : MonoBehaviour {
 	public Movement player;
 	public Gun gun;
-	public GUIText ammoText;
+	//public GUIText ammoText;
 	public GUIText WaveText;
 	public EnemySpawn enemyspawn;
 	public int EnemiesLeft = 0;

@@ -15,22 +15,24 @@ public class HUDCircleBar : MonoBehaviour {
 	Sprite circle40;
 	Sprite circle30;
 	Sprite circle20;
-	Sprite circle10;	
+	Sprite circle10;
+	Sprite circle0;	
 	
 	void Start()
 	{
 		value = gun.ammo;
 		maxValue = gun.maxAmmo;
-		circleFull = Resources.Load<Sprite>("HUD/circlefull");
-		circle90 = Resources.Load<Sprite>("HUD/circle90");
-		circle80 = Resources.Load<Sprite>("HUD/circle80");
-		circle70 = Resources.Load<Sprite>("HUD/circle70");
-		circle60 = Resources.Load<Sprite>("HUD/circle60");
-		circle50 = Resources.Load<Sprite>("HUD/circle50");
-		circle40 = Resources.Load<Sprite>("HUD/circle40");
-		circle30 = Resources.Load<Sprite>("HUD/circle30");
-		circle20 = Resources.Load<Sprite>("HUD/circle20");
-		circle10 = Resources.Load<Sprite>("HUD/circle10");		
+		circleFull = Resources.Load<Sprite>("HUD/ammo100");
+		circle90 = Resources.Load<Sprite>("HUD/ammo90");
+		circle80 = Resources.Load<Sprite>("HUD/ammo80");
+		circle70 = Resources.Load<Sprite>("HUD/ammo70");
+		circle60 = Resources.Load<Sprite>("HUD/ammo60");
+		circle50 = Resources.Load<Sprite>("HUD/ammo50");
+		circle40 = Resources.Load<Sprite>("HUD/ammo40");
+		circle30 = Resources.Load<Sprite>("HUD/ammo30");
+		circle20 = Resources.Load<Sprite>("HUD/ammo20");
+		circle10 = Resources.Load<Sprite>("HUD/ammo10");	
+		circle0 = Resources.Load<Sprite>("HUD/ammo0");	
 	}
 	
 	void Update () 
@@ -79,14 +81,8 @@ public class HUDCircleBar : MonoBehaviour {
 		}
 		if(value <= 0)
 		{
-			renderer.enabled = false;
+			GetComponent<SpriteRenderer>().sprite = circle0;
 		}
-		else
-		{
-			if(!renderer.enabled)
-			{
-				renderer.enabled = true;
-			}
-		}
+		
 	}
 }
