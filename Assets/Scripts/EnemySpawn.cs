@@ -14,7 +14,8 @@ public class EnemySpawn : MonoBehaviour
 	public int EnemyIterations;
 	public int NumberofEnemies;
 	public HUD hud; 
-	public bool LevelDone;
+	public bool LevelDoneOne;
+	public bool LevelDoneTwo;
 	
 	void Start ()
 	{
@@ -41,36 +42,37 @@ public class EnemySpawn : MonoBehaviour
 			switch (EnemyWave)
 			{
 			case 1:
-				EnemyIterations = 5;
+				EnemyIterations = 1;
 				break;
 			case 3:
-				EnemyIterations = 15;
+				EnemyIterations = 1;
 				spawnWait = 2;
+				LevelDoneOne = true;
 				break;
 			case 5:
-				EnemyIterations = 25;
+				EnemyIterations = 1;
 				spawnWait = 1;
 				break;
+			case 6:
+				EnemyIterations = 0;
+				break;
 			case 7:
-				EnemyIterations = 35;
+				hud.MissionOver.enabled=true;
+				break;
+			case 8:
+				EnemyIterations = 0;
 				spawnWait = 0;
 				break;
 			case 9:
-				EnemyIterations = 45;
+				EnemyIterations = 0;
 				spawnWait = 0;
+				LevelDoneOne = true;
 				break;
 			}
 			hud.EnemiesDone = false;
 			StartCoroutine(SpawnWaves ());
 			waveWait = 5f;
 		}
-
-		if (EnemyWave > 9)
-		{
-			LevelDone = true;
-		}
-
-
 
 	}
 

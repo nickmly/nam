@@ -12,18 +12,30 @@ public class HUD : MonoBehaviour {
 	public float GUIWAVETIMER = 3;
 	public GUIText RoundOver;
 	public float RoundTimer = 5f + 3.983581f;
+	public GUIText MissionOver;
+	
 	// Use this for initialization
 	void Start () {
 		EnemiesLeft = 1;
 		enemyspawn = (EnemySpawn)GameObject.Find("SpawnPoint1").GetComponent("EnemySpawn");
 		RoundOver = (GUIText)GameObject.Find ("RoundText").GetComponent ("GUIText");
+		MissionOver = (GUIText)GameObject.Find ("RoundEndText").GetComponent("GUIText");
 		RoundOver.enabled = false;
+		MissionOver.enabled = false;
 		RoundTimer = 5f;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+	
+		if(enemyspawn.LevelDoneTwo)
+		{
+		
+		MissionOver.enabled = true;
+		
+		}
+	
 		if(EnemiesDone)
 		{
 			enemyspawn.waveWait -= Time.deltaTime;
@@ -59,7 +71,10 @@ public class HUD : MonoBehaviour {
 		if (EnemiesLeft == 0 && enemyspawn.NumberofEnemies != 0)
 		{
 			EnemiesDone = true;
+			
+			if (!enemyspawn.LevelDoneOne)
 			RoundOver.enabled = true;
+		
 			if (RoundTimer > 0)
 			{
 				RoundTimer -= Time.deltaTime;
