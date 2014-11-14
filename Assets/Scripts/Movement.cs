@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
 	public bool canThrow = true;
 	//public string currentGun = "Pistol";
 	
+	public double health = 100;
 	
 	private bool thrown = false;
 	
@@ -132,10 +133,19 @@ public class Movement : MonoBehaviour
 				transform.localScale = scale;
 				facingRight = true;
 			}
+			
+			
 		}
 
 		void OnCollisionEnter2D (Collision2D col)
 		{			
-			hasJumped = false;			
+			hasJumped = false;	 
+			if(col.gameObject.tag == "Enemy")	
+			{
+				if(health > 0)
+				{
+					health -= 10;
+				}
+			}
 		}
 }

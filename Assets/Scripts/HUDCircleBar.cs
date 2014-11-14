@@ -4,6 +4,7 @@ using System.Collections;
 public class HUDCircleBar : MonoBehaviour {
 
 	public Gun gun;
+	public Movement player;
 	public double value;
 	public double maxValue;
 	Sprite circleFull;
@@ -17,28 +18,55 @@ public class HUDCircleBar : MonoBehaviour {
 	Sprite circle20;
 	Sprite circle10;
 	Sprite circle0;	
-	
+	public string type;
 	void Start()
 	{
-		value = gun.ammo;
-		maxValue = gun.maxAmmo;
-		circleFull = Resources.Load<Sprite>("HUD/ammo100");
-		circle90 = Resources.Load<Sprite>("HUD/ammo90");
-		circle80 = Resources.Load<Sprite>("HUD/ammo80");
-		circle70 = Resources.Load<Sprite>("HUD/ammo70");
-		circle60 = Resources.Load<Sprite>("HUD/ammo60");
-		circle50 = Resources.Load<Sprite>("HUD/ammo50");
-		circle40 = Resources.Load<Sprite>("HUD/ammo40");
-		circle30 = Resources.Load<Sprite>("HUD/ammo30");
-		circle20 = Resources.Load<Sprite>("HUD/ammo20");
-		circle10 = Resources.Load<Sprite>("HUD/ammo10");	
-		circle0 = Resources.Load<Sprite>("HUD/ammo0");	
+		if(type == "AMMO")
+		{
+			value = gun.ammo;
+			maxValue = gun.maxAmmo;
+			circleFull = Resources.Load<Sprite>("HUD/ammo100");
+			circle90 = Resources.Load<Sprite>("HUD/ammo90");
+			circle80 = Resources.Load<Sprite>("HUD/ammo80");
+			circle70 = Resources.Load<Sprite>("HUD/ammo70");
+			circle60 = Resources.Load<Sprite>("HUD/ammo60");
+			circle50 = Resources.Load<Sprite>("HUD/ammo50");
+			circle40 = Resources.Load<Sprite>("HUD/ammo40");
+			circle30 = Resources.Load<Sprite>("HUD/ammo30");
+			circle20 = Resources.Load<Sprite>("HUD/ammo20");
+			circle10 = Resources.Load<Sprite>("HUD/ammo10");	
+			circle0 = Resources.Load<Sprite>("HUD/ammo0");	
+		}
+		if(type == "HEALTH")
+		{
+			value = player.health;
+			maxValue = 100;
+			circleFull = Resources.Load<Sprite>("HUD/HealthBar/HealthBar100");
+			circle90 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar90");
+			circle80 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar80");
+			circle70 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar70");
+			circle60 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar60");
+			circle50 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar50");
+			circle40 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar40");
+			circle30 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar30");
+			circle20 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar20");
+			circle10 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar10");	
+			circle0 = Resources.Load<Sprite>("HUD/HealthBar/HealthBar0");	
+		}
 	}
 	
 	void Update () 
 	{
-		value = gun.ammo;
-		maxValue = gun.maxAmmo;
+		if(type == "AMMO")
+		{
+			value = gun.ammo;
+			maxValue = gun.maxAmmo;
+		}
+		if(type == "HEALTH")
+		{
+			value = player.health;
+			maxValue = 100;
+		}
 		if(value == maxValue)
 		{
 			GetComponent<SpriteRenderer>().sprite = circleFull;
