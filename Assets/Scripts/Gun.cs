@@ -29,6 +29,7 @@ public class Gun : MonoBehaviour
 	public float maxThrowTime;
 	public GameObject newGun;
 
+
 	void Start()
 	{
 		GetNewGun();
@@ -89,7 +90,7 @@ public class Gun : MonoBehaviour
 				scale = transform.localScale;
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
-				transform.localScale = scale;					
+				transform.localScale = scale;	
 				break;
 			case "AR":
 				scale = transform.localScale;
@@ -113,7 +114,6 @@ public class Gun : MonoBehaviour
 		
 		if(col.gameObject.tag == "Enemy" && !collided)
 		   {
-
 			Destroy(gameObject);
 			col.gameObject.GetComponent<EnemyHealth>().health -= playerdamage;
 

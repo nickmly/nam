@@ -21,6 +21,11 @@ public class Movement : MonoBehaviour
 	public double health = 100;
 	
 	private bool thrown = false;
+
+	public AudioClip AR;
+	public AudioClip Pistol;
+	public AudioClip HURT;
+	public AudioClip DEAD;
 	
 	
 		// Use this for initialization
@@ -48,18 +53,23 @@ public class Movement : MonoBehaviour
 		{
 			anim.SetBool ("AutoThrow", Input.GetKey (KeyCode.Mouse0));
 			if (Input.GetKey (KeyCode.Mouse0) && canThrow) 
-			{				
+			{		
+				audio.clip = AR;
 				thrown = true;
 				canThrow = false;
+				audio.Play();
+
 			}	
 		}
 		else
 		{
 			anim.SetBool ("isThrowing", thrown);
 			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
-			{				
+			{			
+				audio.clip = Pistol;
 				thrown = true;
 				canThrow = false;
+				audio.Play();
 			}	
 		}
 
@@ -142,10 +152,20 @@ public class Movement : MonoBehaviour
 			hasJumped = false;	 
 			if(col.gameObject.tag == "Enemy")	
 			{
-				if(health > 0)
+				if(health > 1 && health != 10)
 				{
+				audio.clip = HURT;
+				audio.Play ();
 					health -= 10;
 				}
+
+			else if(health >= 0)
+			{
+				audio.clip = DEAD;
+				audio.Play ();
+				health -= 10;
+			}
+
 			}
 		}
 }

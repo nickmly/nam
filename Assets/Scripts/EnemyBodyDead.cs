@@ -7,6 +7,8 @@ public class EnemyBodyDead : MonoBehaviour {
 	public Animator anim;
 	public bool isDying = false;
 
+
+
 	// Use this for initialization
 	void Start () {
 	isDying = false;
@@ -28,6 +30,14 @@ public class EnemyBodyDead : MonoBehaviour {
 	
 	anim.SetBool("isDead", isDying);
 	
+	}
+
+	void OnCollisionEnter2D (Collision2D col)
+	{
+		if(col.gameObject.layer == 12 && !isDying)
+		{
+
+		}
 	}
 	
 	
