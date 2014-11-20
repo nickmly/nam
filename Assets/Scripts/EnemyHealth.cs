@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
 	public Animator EnemyBodyAnim;
 
 	public bool isStill;
+	public GameObject Weapon;
 
 
 	
@@ -31,12 +32,13 @@ public class EnemyHealth : MonoBehaviour
 		dead = false;
 		speedX = Random.Range(10,20);
 		EnemyBodyAnim = (Animator)GameObject.Find("/EnemyBody/EnemyBodyHolder").GetComponent("Animator");
-
+		Weapon = (GameObject)GameObject.Find ("/EnemyBody/EnemyBodyHolder/EnemyArms/Right Arm/Right Wrist/Right Hand/Club");
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
+		Weapon.tag = "Enemy Weapon";
 		EnemyBodyAnim.SetBool("isStill",isStill);
 	
 		DeltaDistance = Mathf.Abs (player.rigidbody2D.position.x) - Mathf.Abs(this.rigidbody2D.position.x);
