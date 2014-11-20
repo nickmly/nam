@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
 				audioObjects[i].AddComponent("AudioSource");
 				audioObjects[i].GetComponent<AudioSource>().clip = audioClips[i];				
 			}
-
+			
 			anim = GetComponent<Animator> ();
 		}
 
@@ -131,9 +131,18 @@ public class Movement : MonoBehaviour
 			if ((velocity.x > 0.1 || velocity.x < 0.1) && !isRunning) 
 			{
 				isRunning = true;
-				
-				audioObjects[5].GetComponent<AudioSource>().loop = true;
-				audioObjects[5].GetComponent<AudioSource>().Play();
+				if(!hasJumped)
+				{
+					audioObjects[5].GetComponent<AudioSource>().loop = true;
+					audioObjects[5].GetComponent<AudioSource>().Play();
+				}
+				else
+				{
+					if(audioObjects[5].GetComponent<AudioSource>().isPlaying)
+					{
+						audioObjects[5].GetComponent<AudioSource>().Pause();
+					}
+				}
 			}
 
 			if (velocity.x == 0) 
@@ -173,24 +182,29 @@ public class Movement : MonoBehaviour
 			
 			
 		}
-
-		void OnCollisionEnter2D (Collision2D col)
-		{			
-			hasJumped = false;	 
-			if(col.gameObject.tag == "Enemy Weapon")	
-			{
-				if(health > 1 && health != 10)
-				{					
-					audioObjects[2].GetComponent<AudioSource>().Play ();
-					health -= 10;
-				}
-
+		
+		void OnCollisionStay2D(Collision2D col)
+		{
+		if(col.gameObject.tag == "Enemy")	
+		{
+			if(health > 1 && health != 10)
+			{					
+				audioObjects[2].GetComponent<AudioSource>().Play ();
+				health -= 1;
+			}
+			
 			else if(health >= 0)
 			{				
 				audioObjects[3].GetComponent<AudioSource>().Play ();
-				health -= 10;
+				health -= 1;
 			}
-
-			}
+			
+		}
+		}
+		
+		void OnCollisionEnter2D (Collision2D col)
+		{			
+			hasJumped = false;	 
+		
 		}
 }
