@@ -12,6 +12,7 @@ public class EnemyArmDead : MonoBehaviour {
 	
 	}
 	
+	
 	// Update is called once per frame
 	void Update () {
 	
@@ -20,6 +21,16 @@ public class EnemyArmDead : MonoBehaviour {
 	
 	anim.SetBool("isDead",true);
 	
+	}
+	
+	if(enemy.GetComponent<EnemyHealth>().isStill)
+	{
+	anim.SetBool ("isAttacking", true);
+	anim.SetBool("isStill",enemy.GetComponent<EnemyHealth>().isStill);
+	}
+	else{
+	anim.SetBool("isStill",false);
+	anim.SetBool ("isAttacking",false);
 	}
 	
 	}

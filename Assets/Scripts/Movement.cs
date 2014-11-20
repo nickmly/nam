@@ -26,6 +26,8 @@ public class Movement : MonoBehaviour
 	public AudioClip Pistol;
 	public AudioClip HURT;
 	public AudioClip DEAD;
+	public AudioClip JUMP;
+	public AudioClip RUN;
 	
 	
 		// Use this for initialization
@@ -45,6 +47,8 @@ public class Movement : MonoBehaviour
 			{				
 				hasJumped = true;
 				rigidbody2D.AddForce (new Vector3 (0, jumpSpeed, 0));
+				audio.clip = JUMP;
+				audio.Play();
 			}
 			anim.SetBool ("HasJumped", hasJumped);
 

@@ -68,7 +68,7 @@ public class HUD : MonoBehaviour {
 			enemyspawn.NumberofEnemies = 0;
 		}
 
-		if (EnemiesLeft == 0 && enemyspawn.NumberofEnemies != 0)
+		if (EnemiesLeft == 1 && enemyspawn.NumberofEnemies != 0)
 		{
 			EnemiesDone = true;
 			

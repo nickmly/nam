@@ -16,8 +16,6 @@ public class EnemyHealth : MonoBehaviour
 	private float AttackingDistance = 2.5f;
 
 	public Animator EnemyBodyAnim;
-	public Animator EnemyArmAnim;
-	public Animator EnemyLegAnim;
 
 	public bool isStill;
 
@@ -33,8 +31,6 @@ public class EnemyHealth : MonoBehaviour
 		dead = false;
 		speedX = Random.Range(10,20);
 		EnemyBodyAnim = (Animator)GameObject.Find("/EnemyBody/EnemyBodyHolder").GetComponent("Animator");
-		EnemyArmAnim = (Animator)GameObject.Find("/EnemyBody/EnemyBodyHolder/EnemyArms").GetComponent("Animator");
-		EnemyLegAnim = (Animator)GameObject.Find("/EnemyBody/EnemyBodyHolder/EnemyLegs").GetComponent("Animator");
 
 	}
 
@@ -42,8 +38,6 @@ public class EnemyHealth : MonoBehaviour
 	void Update ()
 	{
 		EnemyBodyAnim.SetBool("isStill",isStill);
-		EnemyArmAnim.SetBool("isStill",isStill);
-		EnemyLegAnim.SetBool("isStill",isStill);
 	
 		DeltaDistance = Mathf.Abs (player.rigidbody2D.position.x) - Mathf.Abs(this.rigidbody2D.position.x);
 		

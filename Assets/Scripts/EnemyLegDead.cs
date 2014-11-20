@@ -21,5 +21,15 @@ public class EnemyLegDead : MonoBehaviour {
 	
 	}
 	
+	if(enemy.GetComponent<EnemyHealth>().isStill)
+	{
+	anim.SetBool ("isStill", enemy.GetComponent<EnemyHealth>().isStill);
+	}
+	else
+	{
+	
+	anim.SetBool("isStill", false);
+	}
+	
 	}
 }

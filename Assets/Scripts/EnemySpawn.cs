@@ -57,7 +57,7 @@ public class EnemySpawn : MonoBehaviour
 				EnemyIterations = 0;
 				break;
 			case 7:
-				hud.MissionOver.enabled=true;
+				EnemyIterations = 0;
 				break;
 			case 8:
 				EnemyIterations = 0;
