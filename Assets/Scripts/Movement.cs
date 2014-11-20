@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Movement : MonoBehaviour
 {
@@ -22,20 +23,33 @@ public class Movement : MonoBehaviour
 	
 	private bool thrown = false;
 
-	public AudioClip AR;
-	public AudioClip Pistol;
-	public AudioClip HURT;
-	public AudioClip DEAD;
-	public AudioClip JUMP;
-	public AudioClip RUN;
+	public AudioClip acAR;
+	public AudioClip acPistol;
+	public AudioClip acHurt;
+	public AudioClip acDead;
+	public AudioClip acJump;
+	public AudioClip acRun;
 	
 	
+	private List<GameObject> audioObjects;
+	private AudioClip[] audioClips;
 		// Use this for initialization
 		void Start ()
 		{	
 			//gun = (Gun)GameObject.Find (currentGun).GetComponent("Gun");
 			//gunObject = GameObject.Find ("gunPrefab");
 			//gunTransform = (Transform)GameObject.Find (currentGun).GetComponent("Transform");
+			
+			audioClips = new AudioClip[6] {acAR, acPistol, acHurt, acDead, acJump,acRun};
+			audioObjects = new List<GameObject>();
+
+			for(int i =0; i < audioClips.Length; i++)
+			{			
+				audioObjects.Add(new GameObject());							
+				audioObjects[i].AddComponent("AudioSource");
+				audioObjects[i].GetComponent<AudioSource>().clip = audioClips[i];				
+			}
+
 			anim = GetComponent<Animator> ();
 		}
 
@@ -46,9 +60,8 @@ public class Movement : MonoBehaviour
 			if (Input.GetKeyDown (KeyCode.Space) && !hasJumped) 
 			{				
 				hasJumped = true;
-				rigidbody2D.AddForce (new Vector3 (0, jumpSpeed, 0));
-				audio.clip = JUMP;
-				audio.Play();
+				rigidbody2D.AddForce (new Vector3 (0, jumpSpeed, 0));			
+				audioObjects[4].GetComponent<AudioSource>().Play();
 			}
 			anim.SetBool ("HasJumped", hasJumped);
 
@@ -57,11 +70,10 @@ public class Movement : MonoBehaviour
 		{
 			anim.SetBool ("AutoThrow", Input.GetKey (KeyCode.Mouse0));
 			if (Input.GetKey (KeyCode.Mouse0) && canThrow) 
-			{		
-				audio.clip = AR;
+			{				
 				thrown = true;
 				canThrow = false;
-				audio.Play();
+				audioObjects[0].GetComponent<AudioSource>().Play();
 
 			}	
 		}
@@ -69,11 +81,10 @@ public class Movement : MonoBehaviour
 		{
 			anim.SetBool ("isThrowing", thrown);
 			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
-			{			
-				audio.clip = Pistol;
+			{
 				thrown = true;
 				canThrow = false;
-				audio.Play();
+				audioObjects[1].GetComponent<AudioSource>().Play();
 			}	
 		}
 
@@ -120,11 +131,18 @@ public class Movement : MonoBehaviour
 			if ((velocity.x > 0.1 || velocity.x < 0.1) && !isRunning) 
 			{
 				isRunning = true;
+				
+				audioObjects[5].GetComponent<AudioSource>().loop = true;
+				audioObjects[5].GetComponent<AudioSource>().Play();
 			}
 
 			if (velocity.x == 0) 
 			{
 				isRunning = false;
+				if(audioObjects[5].GetComponent<AudioSource>().isPlaying)
+				{
+					audioObjects[5].GetComponent<AudioSource>().Pause();
+				}
 			}
 
 			anim.SetBool ("isRunning", isRunning);
@@ -148,25 +166,28 @@ public class Movement : MonoBehaviour
 				facingRight = true;
 			}
 			
+			for(int i =0; i < audioObjects.Count; i++)
+			{			
+				audioObjects[i].transform.position = transform.position;
+			}
+			
 			
 		}
 
 		void OnCollisionEnter2D (Collision2D col)
 		{			
 			hasJumped = false;	 
-			if(col.gameObject.tag == "Enemy")	
+			if(col.gameObject.tag == "Enemy Weapon")	
 			{
 				if(health > 1 && health != 10)
-				{
-				audio.clip = HURT;
-				audio.Play ();
+				{					
+					audioObjects[2].GetComponent<AudioSource>().Play ();
 					health -= 10;
 				}
 
 			else if(health >= 0)
-			{
-				audio.clip = DEAD;
-				audio.Play ();
+			{				
+				audioObjects[3].GetComponent<AudioSource>().Play ();
 				health -= 10;
 			}
 
