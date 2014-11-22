@@ -21,7 +21,7 @@ public class EnemySpawn : MonoBehaviour
 	{
 		hud = (HUD)GameObject.Find ("gameMaster").GetComponent("HUD");
 		StartCoroutine (SpawnWaves ());
-		EnemyWave = 0;
+		EnemyWave = 1;
 	}
 	
 	void Update()
@@ -42,31 +42,31 @@ public class EnemySpawn : MonoBehaviour
 			switch (EnemyWave)
 			{
 			case 1:
-				EnemyIterations = 1;
+				EnemyIterations = 10;
+				break;
+			case 2:
+				EnemyIterations = 15;
+				spawnWait = 2;
 				break;
 			case 3:
-				EnemyIterations = 1;
+				EnemyIterations = 25;
 				spawnWait = 2;
-				LevelDoneOne = true;
+				break;
+			case 4:
+				EnemyIterations = 35;
+				spawnWait = 2;
 				break;
 			case 5:
-				EnemyIterations = 1;
-				spawnWait = 1;
+				EnemyIterations = 45;
+				spawnWait = 2;
 				break;
 			case 6:
-				EnemyIterations = 0;
+				EnemyIterations = 50;
+				spawnWait = 3;
 				break;
 			case 7:
-				EnemyIterations = 0;
-				break;
-			case 8:
-				EnemyIterations = 0;
-				spawnWait = 0;
-				break;
-			case 9:
-				EnemyIterations = 0;
-				spawnWait = 0;
-				LevelDoneOne = true;
+				EnemyIterations = 100;
+				spawnWait = 3;
 				break;
 			}
 			hud.EnemiesDone = false;

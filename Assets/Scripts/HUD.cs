@@ -4,7 +4,6 @@ using System.Collections;
 public class HUD : MonoBehaviour {
 	public Movement player;
 	public Gun gun;
-	//public GUIText ammoText;
 	public GUIText WaveText;
 	public EnemySpawn enemyspawn;
 	public int EnemiesLeft = 0;
@@ -12,44 +11,55 @@ public class HUD : MonoBehaviour {
 	public float GUIWAVETIMER = 3;
 	public GUIText RoundOver;
 	public float RoundTimer = 5f + 3.983581f;
-	public GUIText MissionOver;
+	
+	public GUIText scoreText;
+	public int score;
 	
 	// Use this for initialization
 	void Start () {
-		EnemiesLeft = 1;
+		EnemiesLeft = 0;
+		EnemiesDone = false;
 		enemyspawn = (EnemySpawn)GameObject.Find("SpawnPoint1").GetComponent("EnemySpawn");
 		RoundOver = (GUIText)GameObject.Find ("RoundText").GetComponent ("GUIText");
-		MissionOver = (GUIText)GameObject.Find ("RoundEndText").GetComponent("GUIText");
 		RoundOver.enabled = false;
-		MissionOver.enabled = false;
 		RoundTimer = 5f;
+		score = 0;
+		UpdateScore();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 	
-		if(enemyspawn.LevelDoneTwo)
+		if(enemyspawn.waveWait > 1.99)
 		{
 		
-		MissionOver.enabled = true;
+		RoundOver.enabled = true;
+		
+		}
+		else
+		{
+		
+		RoundOver.enabled = false;
 		
 		}
 	
-		if(EnemiesDone)
+		if(EnemiesLeft == 1)
 		{
 			enemyspawn.waveWait -= Time.deltaTime;
+			//RoundOver.enabled = true;
 		}
 
 
 		if (GUIWAVETIMER > 0)
 		{
 			GUIWAVETIMER -= Time.deltaTime;
+			//RoundOver.enabled=true;
 		}
-		if (GUIWAVETIMER < 0)
+		
+		else
 		{
-			WaveText.enabled = false;
-
+		RoundOver.enabled = false;
 		}
 
 		//ammoText.text = gun.ammo.ToString ();
@@ -62,13 +72,13 @@ public class HUD : MonoBehaviour {
 			RoundOver.enabled = false;
 		}
 
-		if (RoundOver.enabled = false)
+		if (RoundOver.enabled == false)
 		{
 			RoundTimer = 5f;
 			enemyspawn.NumberofEnemies = 0;
 		}
 
-		if (EnemiesLeft == 1 && enemyspawn.NumberofEnemies != 0)
+		if (EnemiesLeft == 0)
 		{
 			EnemiesDone = true;
 			
@@ -101,9 +111,17 @@ public class HUD : MonoBehaviour {
 
 	}
 
-	void OnGUI()
+	void UpdateScore()
 	{
-
+		scoreText.text = "S C O R E : " + score;
+	}
+	
+	public void AddScore (int newScoreValue)
+	{
+	
+	score += newScoreValue;
+	UpdateScore();
+	
 	}
 
 }

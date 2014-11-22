@@ -16,7 +16,6 @@ public class Gun : MonoBehaviour
 
 	public bool isAutomatic = false;
 	public bool twoHanded = false;
-
 	
 
 	public int playerdamage;
@@ -28,6 +27,13 @@ public class Gun : MonoBehaviour
 	public float throwTimer;
 	public float maxThrowTime;
 	public GameObject newGun;
+	
+	public SpriteRenderer Pistol;
+	public SpriteRenderer AR;
+	public SpriteRenderer RubberDuck;
+	
+	public int scoreValue = 50;
+	public HUD hudd;
 
 
 	void Start()
@@ -36,6 +42,11 @@ public class Gun : MonoBehaviour
 		tempScale = transform.localScale;
 		arm = (Transform)GameObject.Find ("RightArm").GetComponent("Transform");
 		player = (Movement)GameObject.Find ("Body").GetComponent("Movement");
+		Pistol = (SpriteRenderer)GameObject.Find ("Pistol").GetComponent("SpriteRenderer");
+		AR = (SpriteRenderer)GameObject.Find ("AR").GetComponent("SpriteRenderer");
+		RubberDuck = (SpriteRenderer)GameObject.Find ("RubberDuck").GetComponent("SpriteRenderer");
+		hudd = (HUD)GameObject.Find ("gameMaster").GetComponent("HUD");
+		
 	}
 
 	public void Throw (bool isRight, float playerSpeed, Quaternion gunRot) 
@@ -91,12 +102,18 @@ public class Gun : MonoBehaviour
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
 				transform.localScale = scale;	
+				Pistol.enabled = true;
+				AR.enabled = false;
+				RubberDuck.enabled = false;
 				break;
 			case "AR":
 				scale = transform.localScale;
 				scale.x = -0.2712036f;
 				scale.y = 0.2712047f;
 				transform.localScale = scale;
+				AR.enabled = true;
+				Pistol.enabled = false;
+				RubberDuck.enabled = false;
 				break;
 			}
 
@@ -116,8 +133,14 @@ public class Gun : MonoBehaviour
 		   {
 			Destroy(gameObject);
 			col.gameObject.GetComponent<EnemyHealth>().health -= playerdamage;
+			
+			if(col.gameObject.GetComponent<EnemyHealth>().health <= 0)
+			{
+				hudd.AddScore(scoreValue);
+			}
 
 		}
+		
 		if(!collided)
 		{
 			
@@ -153,6 +176,9 @@ public class Gun : MonoBehaviour
 				ammo = 5;		
 				throwTimer = 0.25f;		
 				playerdamage = 20;
+				Pistol.enabled = true;
+				AR.enabled = false;
+				RubberDuck.enabled = false;
 				break;
 			case "AR":
 				velocity.x = 2500f;
@@ -166,6 +192,9 @@ public class Gun : MonoBehaviour
 				ammo = 20;
 				throwTimer = 0.1f;
 				playerdamage = 35;
+				Pistol.enabled = false;
+				AR.enabled = true;
+				RubberDuck.enabled = false;
 				break;
 			}
 			maxAmmo = ammo;

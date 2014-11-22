@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyHealth.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/HUD.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemySpawn.cs" Line="18" Column="27" />
-      <File FileName="Assets\Scripts\EnemyHealth.cs" Line="36" Column="3" />
+      <File FileName="Assets/Scripts/HUD.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/Gun.cs" Line="96" Column="5" />
+      <File FileName="Assets/Scripts/EnemyHealth.cs" Line="39" Column="31" />
+      <File FileName="Assets/Scripts/EnemySpawn.cs" Line="42" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

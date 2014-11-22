@@ -19,6 +19,9 @@ public class EnemyHealth : MonoBehaviour
 
 	public bool isStill;
 	public GameObject Weapon;
+	
+	public int scoreValue = 50;
+	public HUD hudd;
 
 
 	
@@ -47,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
 		
 		if(dead == true)
 		{
-
+	
 		}
 		speed.x = speedX;
 		
@@ -95,7 +98,6 @@ public class EnemyHealth : MonoBehaviour
 		
 		if (health <= 0) 
 		{
-
 			speedX = 0;			
 			dead = true; 
 
