@@ -29,9 +29,11 @@ public class Movement : MonoBehaviour
 	public AudioClip acDead;
 	public AudioClip acJump;
 	public AudioClip acRun;
+	public AudioClip acDuck;
+	public AudioClip acExp;
 	
 	
-	private List<GameObject> audioObjects;
+	public List<GameObject> audioObjects;
 	private AudioClip[] audioClips;
 		// Use this for initialization
 		void Start ()
@@ -40,7 +42,7 @@ public class Movement : MonoBehaviour
 			//gunObject = GameObject.Find ("gunPrefab");
 			//gunTransform = (Transform)GameObject.Find (currentGun).GetComponent("Transform");
 			
-			audioClips = new AudioClip[6] {acAR, acPistol, acHurt, acDead, acJump,acRun};
+			audioClips = new AudioClip[8] {acAR, acPistol, acHurt, acDead, acJump,acRun, acDuck, acExp};
 			audioObjects = new List<GameObject>();
 
 			for(int i =0; i < audioClips.Length; i++)

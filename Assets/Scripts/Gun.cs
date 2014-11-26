@@ -34,7 +34,9 @@ public class Gun : MonoBehaviour
 	
 	public int scoreValue = 50;
 	public HUD hudd;
-
+	
+	
+	public ParticleSystem explosion;
 
 	void Start()
 	{
@@ -102,18 +104,27 @@ public class Gun : MonoBehaviour
 				scale.x = -0.07364167f;
 				scale.y = 0.07363904f;
 				transform.localScale = scale;	
-				Pistol.enabled = true;
-				AR.enabled = false;
-				RubberDuck.enabled = false;
+//				Pistol.enabled = true;
+//				AR.enabled = false;
+//				RubberDuck.enabled = false;
 				break;
 			case "AR":
 				scale = transform.localScale;
 				scale.x = -0.2712036f;
 				scale.y = 0.2712047f;
 				transform.localScale = scale;
-				AR.enabled = true;
-				Pistol.enabled = false;
-				RubberDuck.enabled = false;
+//				AR.enabled = true;
+//				Pistol.enabled = false;
+//				RubberDuck.enabled = false;
+				break;
+			case "RubberDuck":
+				scale = transform.localScale;
+				scale.x = -0.2306246f;
+				scale.y = 0.2245191f;
+				transform.localScale = scale;
+//				AR.enabled = true;
+//				Pistol.enabled = false;
+//				RubberDuck.enabled = false;
 				break;
 			}
 
@@ -131,6 +142,13 @@ public class Gun : MonoBehaviour
 		
 		if(col.gameObject.tag == "Enemy" && !collided)
 		   {
+			if(gunType == "RubberDuck")
+			{
+				explosion.transform.position = transform.position;
+				explosion.Play();
+				player.audioObjects[6].GetComponent<AudioSource>().Play();
+				player.audioObjects[7].GetComponent<AudioSource>().Play();
+			}
 			Destroy(gameObject);
 			col.gameObject.GetComponent<EnemyHealth>().health -= playerdamage;
 			
@@ -143,7 +161,13 @@ public class Gun : MonoBehaviour
 		
 		if(!collided)
 		{
-			
+			if(gunType == "RubberDuck")
+			{
+				explosion.transform.position = transform.position;
+				explosion.Play();
+				player.audioObjects[6].GetComponent<AudioSource>().Play();
+				player.audioObjects[7].GetComponent<AudioSource>().Play();
+			}
 			gameObject.tag = "Untagged";
 			rigidbody2D.drag = 20;
 			collided = true;
@@ -159,7 +183,7 @@ public class Gun : MonoBehaviour
 	{
 		if(gameObject.tag == "Player")
 		{
-			sprite = Resources.Load<Sprite> ("Weapons/Modern/" + gunType);
+			sprite = Resources.Load<Sprite> ("Weapons/" + gunType);
 			gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
 			Vector3 scale;
 			switch(gunType)
@@ -173,12 +197,12 @@ public class Gun : MonoBehaviour
 				isAutomatic = false;
 				twoHanded = false;
 				fireRate = 0.5f;
-				ammo = 5;		
+				ammo = 8;		
 				throwTimer = 0.25f;		
 				playerdamage = 20;
-				Pistol.enabled = true;
-				AR.enabled = false;
-				RubberDuck.enabled = false;
+//				Pistol.enabled = true;
+//				AR.enabled = false;
+//				RubberDuck.enabled = false;
 				break;
 			case "AR":
 				velocity.x = 2500f;
@@ -192,9 +216,22 @@ public class Gun : MonoBehaviour
 				ammo = 20;
 				throwTimer = 0.1f;
 				playerdamage = 35;
-				Pistol.enabled = false;
-				AR.enabled = true;
-				RubberDuck.enabled = false;
+//				Pistol.enabled = false;
+//				AR.enabled = true;
+//				RubberDuck.enabled = false;
+				break;
+			case "RubberDuck":
+				velocity.x = 2500f;
+				scale = transform.localScale;
+				scale.x = -0.2306246f;
+				scale.y = 0.2245191f;
+				transform.localScale = scale;
+				isAutomatic = false;
+				twoHanded = false;
+				fireRate = 0.2f;
+				ammo = 5;
+				throwTimer = 0.25f;
+				playerdamage = 100;
 				break;
 			}
 			maxAmmo = ammo;
@@ -210,7 +247,7 @@ public class Gun : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-
+		
 		if (Input.GetKeyDown (KeyCode.Alpha1))
 		{
 			gunType = "Pistol";
@@ -219,6 +256,11 @@ public class Gun : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Alpha2))
 		{
 			gunType = "AR";
+			GetNewGun();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha3))
+		{
+			gunType = "RubberDuck";
 			GetNewGun();
 		}
 		if (Input.GetKeyDown (KeyCode.R)) 
