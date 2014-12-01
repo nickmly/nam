@@ -126,6 +126,42 @@ public class Gun : MonoBehaviour
 //				Pistol.enabled = false;
 //				RubberDuck.enabled = false;
 				break;
+			case "SawedOffShot":
+				scale = transform.localScale;
+				scale.x = 0.05649794f;
+				scale.y = 0.07662619f;
+				transform.localScale = scale;
+				//				AR.enabled = true;
+				//				Pistol.enabled = false;
+				//				RubberDuck.enabled = false;
+				break;
+			case "Revolver":
+				scale = transform.localScale;
+				scale.x = -0.08208004f;
+				scale.y = 0.06501424f;
+				transform.localScale = scale;
+				//				AR.enabled = true;
+				//				Pistol.enabled = false;
+				//				RubberDuck.enabled = false;
+				break;
+			case "LMG":
+				scale = transform.localScale;
+				scale.x = 0.1900526f;
+				scale.y = 0.1900525f;
+				transform.localScale = scale;
+				//				AR.enabled = true;
+				//				Pistol.enabled = false;
+				//				RubberDuck.enabled = false;
+				break;
+			case "Winchester":
+				scale = transform.localScale;
+				scale.x = 0.1022699f;
+				scale.y = 0.1022698f;
+				transform.localScale = scale;
+				//				AR.enabled = true;
+				//				Pistol.enabled = false;
+				//				RubberDuck.enabled = false;
+				break;
 			}
 
 			newGun.rigidbody2D.AddTorque(Random.Range(50,150)); //rotate the gun randomly
@@ -233,6 +269,58 @@ public class Gun : MonoBehaviour
 				throwTimer = 0.25f;
 				playerdamage = 100;
 				break;
+			case "SawedOffShot":
+				scale = transform.localScale;
+				velocity.x = 2500f;
+				scale.x = 0.05649794f;
+				scale.y = 0.07662619f;
+				transform.localScale = scale;
+				isAutomatic = false;
+				twoHanded = false;
+				fireRate = 0.75f; 
+				ammo = 2; 
+				throwTimer = 0.5f; 
+				playerdamage = 75;
+				break;
+			case "Revolver":
+				scale = transform.localScale;
+				velocity.x = 2500f;
+				scale.x = -0.08208004f;
+				scale.y = 0.06501424f;
+				transform.localScale = scale;
+				isAutomatic = false;
+				twoHanded = false;
+				fireRate = 0.5f; 
+				ammo = 6; 
+				throwTimer = 0.1f; 
+				playerdamage = 30;
+				break;
+			case "LMG":
+				scale = transform.localScale;
+				velocity.x = 2500f;
+				scale.x = 0.1900526f;
+				scale.y = 0.1900525f;
+				transform.localScale = scale;
+				isAutomatic = true;
+				twoHanded = true;
+				fireRate = 0.05f; 
+				ammo = 50; 
+				throwTimer = 0.1f; 
+				playerdamage = 45;
+				break;
+			case "Winchester":
+				scale = transform.localScale;
+				velocity.x = 2500f;
+				scale.x = 0.1022699f;
+				scale.y = 0.1022698f;
+				transform.localScale = scale;
+				isAutomatic = false;
+				twoHanded = false;
+				fireRate = 0.7f; 
+				ammo = 1; 
+				throwTimer = 0.1f; 
+				playerdamage = 100;
+				break;
 			}
 			maxAmmo = ammo;
 			maxFireRate = fireRate;
@@ -261,6 +349,29 @@ public class Gun : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.Alpha3))
 		{
 			gunType = "RubberDuck";
+			GetNewGun();
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha4))
+		{
+			gunType = "SawedOffShot";
+			GetNewGun();
+		}
+		
+		if (Input.GetKeyDown (KeyCode.Alpha5))
+		{
+			gunType = "Revolver";
+			GetNewGun();
+		}
+		
+		if (Input.GetKeyDown (KeyCode.Alpha6))
+		{
+			gunType = "LMG";
+			GetNewGun();
+		}
+		
+		if (Input.GetKeyDown (KeyCode.Alpha7))
+		{
+			gunType = "Winchester";
 			GetNewGun();
 		}
 		if (Input.GetKeyDown (KeyCode.R)) 
