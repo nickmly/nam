@@ -36,6 +36,7 @@ public class Gun : MonoBehaviour
 	public HUD hudd;
 	
 	
+	
 	public ParticleSystem explosion;
 
 	void Start()
@@ -47,7 +48,7 @@ public class Gun : MonoBehaviour
 		Pistol = (SpriteRenderer)GameObject.Find ("Pistol").GetComponent("SpriteRenderer");
 		AR = (SpriteRenderer)GameObject.Find ("AR").GetComponent("SpriteRenderer");
 		RubberDuck = (SpriteRenderer)GameObject.Find ("RubberDuck").GetComponent("SpriteRenderer");
-		hudd = (HUD)GameObject.Find ("gameMaster").GetComponent("HUD");
+		hudd = (HUD)GameObject.Find ("gameMaster").GetComponent("HUD");		
 		
 	}
 
@@ -191,6 +192,7 @@ public class Gun : MonoBehaviour
 			if(col.gameObject.GetComponent<EnemyHealth>().health <= 0)
 			{
 				hudd.AddScore(scoreValue);
+				
 			}
 
 		}
@@ -203,7 +205,9 @@ public class Gun : MonoBehaviour
 				explosion.Play();
 				player.audioObjects[6].GetComponent<AudioSource>().Play();
 				player.audioObjects[7].GetComponent<AudioSource>().Play();
+				Destroy(gameObject);
 			}
+			
 			gameObject.tag = "Untagged";
 			rigidbody2D.drag = 20;
 			collided = true;
@@ -298,8 +302,8 @@ public class Gun : MonoBehaviour
 			case "LMG":
 				scale = transform.localScale;
 				velocity.x = 2500f;
-				scale.x = 0.1900526f;
-				scale.y = 0.1900525f;
+				scale.x = 0.1800526f;
+				scale.y = 0.1800525f;
 				transform.localScale = scale;
 				isAutomatic = true;
 				twoHanded = true;

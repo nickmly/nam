@@ -31,7 +31,7 @@ public class HUD : MonoBehaviour {
 	void Update () 
 	{
 	
-		if(enemyspawn.waveWait > 1.99)
+		if(enemyspawn.waveWait > 2)
 		{
 		
 		RoundOver.enabled = true;
@@ -59,7 +59,7 @@ public class HUD : MonoBehaviour {
 		
 		else
 		{
-		RoundOver.enabled = false;
+		//RoundOver.enabled = false;
 		}
 
 		//ammoText.text = gun.ammo.ToString ();
@@ -69,7 +69,7 @@ public class HUD : MonoBehaviour {
 			
 		if(RoundTimer < 0)
 		{
-			RoundOver.enabled = false;
+			//RoundOver.enabled = false;
 		}
 
 		if (RoundOver.enabled == false)
@@ -121,6 +121,7 @@ public class HUD : MonoBehaviour {
 	
 	score += newScoreValue;
 	UpdateScore();
+	audio.Play();
 	
 	}
 

@@ -46,27 +46,27 @@ public class EnemySpawn : MonoBehaviour
 				break;
 			case 2:
 				EnemyIterations = 15;
-				spawnWait = 2;
+				spawnWait = 0;
 				break;
 			case 3:
 				EnemyIterations = 25;
-				spawnWait = 2;
+				spawnWait = 0;
 				break;
 			case 4:
 				EnemyIterations = 35;
-				spawnWait = 2;
+				spawnWait = 0;
 				break;
 			case 5:
 				EnemyIterations = 45;
-				spawnWait = 2;
+				spawnWait = 0;
 				break;
 			case 6:
 				EnemyIterations = 50;
-				spawnWait = 3;
+				spawnWait = 0;
 				break;
 			case 7:
 				EnemyIterations = 100;
-				spawnWait = 3;
+				spawnWait = 0;
 				break;
 			}
 			hud.EnemiesDone = false;
