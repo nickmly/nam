@@ -22,6 +22,7 @@ public class EnemySpawn : MonoBehaviour
 		hud = (HUD)GameObject.Find ("gameMaster").GetComponent("HUD");
 		StartCoroutine (SpawnWaves ());
 		EnemyWave = 1;
+		waveWait = 5f;
 	}
 	
 	void Update()
@@ -68,6 +69,8 @@ public class EnemySpawn : MonoBehaviour
 				EnemyIterations = 100;
 				spawnWait = 0;
 				break;
+			
+			
 			}
 			hud.EnemiesDone = false;
 			StartCoroutine(SpawnWaves ());

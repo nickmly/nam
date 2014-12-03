@@ -10,7 +10,7 @@ public class HUD : MonoBehaviour {
 	public bool EnemiesDone = false;
 	public float GUIWAVETIMER = 3;
 	public GUIText RoundOver;
-	public float RoundTimer = 5f + 3.983581f;
+	public float RoundTimer = 5f;
 	
 	public GUIText scoreText;
 	public int score;
@@ -30,7 +30,6 @@ public class HUD : MonoBehaviour {
 		enemyspawn = (EnemySpawn)GameObject.Find("SpawnPoint1").GetComponent("EnemySpawn");
 		RoundOver = (GUIText)GameObject.Find ("RoundText").GetComponent ("GUIText");
 		RoundOver.enabled = false;
-		RoundTimer = 5f;
 		score = 0;
 		UpdateScore();
 	}
@@ -109,7 +108,7 @@ public class HUD : MonoBehaviour {
 			
 		if(RoundTimer < 0)
 		{
-			//RoundOver.enabled = false;
+			RoundOver.enabled = false;
 		}
 
 		if (RoundOver.enabled == false)
@@ -161,7 +160,7 @@ public class HUD : MonoBehaviour {
 	
 	score += newScoreValue;
 	UpdateScore();
-	audio.Play();
+//	audio.Play();
 	
 	}
 
