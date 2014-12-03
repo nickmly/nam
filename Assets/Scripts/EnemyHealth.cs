@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
 	public int scoreValue = 50;
 	public HUD hudd;
 
-
+	public bool paused = false;
 	
 	// Use this for initialization
 	void Start ()
@@ -39,81 +39,92 @@ public class EnemyHealth : MonoBehaviour
 		Weapon.tag = "Enemy Weapon";
 		
 	}
-
+	void OnPauseGame()
+	{
+		paused = true;
+		rigidbody2D.isKinematic = true;
+	}
+	void OnResumeGame()
+	{
+		paused = false;
+		rigidbody2D.isKinematic = false;
+	}	
+	
 	// Update is called once per frame
 	void Update ()
 	{
-		
-		EnemyBodyAnim.SetBool("isStill",isStill);
-	
-		DeltaDistance = Mathf.Abs (player.rigidbody2D.position.x) - Mathf.Abs(this.rigidbody2D.position.x);
-		
-		if(dead == true)
+		if(!paused)
 		{
-	
-		}
-		speed.x = speedX;
+			EnemyBodyAnim.SetBool("isStill",isStill);
 		
-		if (player.position.x > rigidbody2D.position.x + 1) 
-		{
-			speed.x *= 1;		
-		}
-		
-		if (player.position.x < rigidbody2D.position.x - 1f) 
-		{
-			speed.x *= -1;
-		}
-		
-		if ((Mathf.Abs (DeltaDistance)) < AttackingDistance) 
-		{
-			this.speed.x *= 0;
-			isStill = true;
-		}
-		else
-		{
-			isStill = false;
-		}
-
-
-		
-		rigidbody2D.AddForce (speed);
-		
-		Vector3 scale;
-		if (!dead) 
-		{
-			if (player.position.x < transform.position.x) 
-			{
-				scale = transform.localScale;
-				scale.x = 0.3289828f;
-				transform.localScale = scale;		
-				
-			} 
-			else if (player.position.x > transform.position.x) 
-			{
-				scale = transform.localScale;
-				scale.x = -0.3289828f;
-				transform.localScale = scale;	   
-			}   
-		}
-		
-		if (health <= 0) 
-		{
-			speedX = 0;			
-			dead = true; 
-
+			DeltaDistance = Mathf.Abs (player.rigidbody2D.position.x) - Mathf.Abs(this.rigidbody2D.position.x);
 			
-			if (deathTimer > 0) 
+			if(dead == true)
 			{
-				deathTimer -= Time.deltaTime;
-				
-			} 
-			else 
-			{
-				Destroy (gameObject);
-				
-			}	
-		}
 		
+			}
+			speed.x = speedX;
+			
+			if (player.position.x > rigidbody2D.position.x + 1) 
+			{
+				speed.x *= 1;		
+			}
+			
+			if (player.position.x < rigidbody2D.position.x - 1f) 
+			{
+				speed.x *= -1;
+			}
+			
+			if ((Mathf.Abs (DeltaDistance)) < AttackingDistance) 
+			{
+				this.speed.x *= 0;
+				isStill = true;
+			}
+			else
+			{
+				isStill = false;
+			}
+	
+	
+			
+			rigidbody2D.AddForce (speed);
+			
+			Vector3 scale;
+			if (!dead) 
+			{
+				if (player.position.x < transform.position.x) 
+				{
+					scale = transform.localScale;
+					scale.x = 0.3289828f;
+					transform.localScale = scale;		
+					
+				} 
+				else if (player.position.x > transform.position.x) 
+				{
+					scale = transform.localScale;
+					scale.x = -0.3289828f;
+					transform.localScale = scale;	   
+				}   
+			}
+			
+			if (health <= 0) 
+			{
+				speedX = 0;			
+				dead = true; 
+	
+				
+				if (deathTimer > 0) 
+				{
+					deathTimer -= Time.deltaTime;
+					
+				} 
+				else 
+				{
+					Destroy (gameObject);
+					
+				}	
+			}
+		}	
 	}
 
 }

@@ -35,7 +35,7 @@ public class Gun : MonoBehaviour
 	public int scoreValue = 50;
 	public HUD hudd;
 	
-	
+	public bool paused = false;
 	public ParticleSystem explosion;
 
 	void Start()
@@ -331,70 +331,81 @@ public class Gun : MonoBehaviour
 			}
 		}
 	}
-
+	void OnPauseGame()
+	{
+		paused = true;
+		
+	}
+	void OnResumeGame()
+	{
+		paused = false;
+		
+	}
 	// Update is called once per frame
 	void Update () 
 	{
-		
-		if (Input.GetKeyDown (KeyCode.Alpha1))
+		if(!paused)
 		{
-			gunType = "Pistol";
-			GetNewGun();
-		}
-		if (Input.GetKeyDown (KeyCode.Alpha2))
-		{
-			gunType = "AR";
-			GetNewGun();
-		}
-		if (Input.GetKeyDown (KeyCode.Alpha3))
-		{
-			gunType = "RubberDuck";
-			GetNewGun();
-		}
-		if (Input.GetKeyDown (KeyCode.Alpha4))
-		{
-			gunType = "SawedOffShot";
-			GetNewGun();
-		}
-		
-		if (Input.GetKeyDown (KeyCode.Alpha5))
-		{
-			gunType = "Revolver";
-			GetNewGun();
-		}
-		
-		if (Input.GetKeyDown (KeyCode.Alpha6))
-		{
-			gunType = "LMG";
-			GetNewGun();
-		}
-		
-		if (Input.GetKeyDown (KeyCode.Alpha7))
-		{
-			gunType = "Winchester";
-			GetNewGun();
-		}
-		if (Input.GetKeyDown (KeyCode.R)) 
-		{
-			ammo = maxAmmo;
-			if(!renderer.enabled)
+			if (Input.GetKeyDown (KeyCode.Alpha1))
 			{
-				renderer.enabled = true;
+				gunType = "Pistol";
+				GetNewGun();
 			}
-		}
-
-		if (collided)
-		{
-
-
-			if(timer > 0f)
+			if (Input.GetKeyDown (KeyCode.Alpha2))
 			{
-				timer -= Time.deltaTime;
+				gunType = "AR";
+				GetNewGun();
 			}
-			else
+			if (Input.GetKeyDown (KeyCode.Alpha3))
 			{
-
-				Destroy (gameObject);
+				gunType = "RubberDuck";
+				GetNewGun();
+			}
+			if (Input.GetKeyDown (KeyCode.Alpha4))
+			{
+				gunType = "SawedOffShot";
+				GetNewGun();
+			}
+			
+			if (Input.GetKeyDown (KeyCode.Alpha5))
+			{
+				gunType = "Revolver";
+				GetNewGun();
+			}
+			
+			if (Input.GetKeyDown (KeyCode.Alpha6))
+			{
+				gunType = "LMG";
+				GetNewGun();
+			}
+			
+			if (Input.GetKeyDown (KeyCode.Alpha7))
+			{
+				gunType = "Winchester";
+				GetNewGun();
+			}
+			if (Input.GetKeyDown (KeyCode.R)) 
+			{
+				ammo = maxAmmo;
+				if(!renderer.enabled)
+				{
+					renderer.enabled = true;
+				}
+			}
+	
+			if (collided)
+			{
+	
+	
+				if(timer > 0f)
+				{
+					timer -= Time.deltaTime;
+				}
+				else
+				{
+	
+					Destroy (gameObject);
+				}
 			}
 		}
 	}

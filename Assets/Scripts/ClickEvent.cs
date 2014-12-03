@@ -12,6 +12,12 @@ public class ClickEvent : MonoBehaviour {
 		audio.Play();
 	}
 	
+	public void restartClicked ()
+	{
+		Application.LoadLevel("Menu");
+		audio.Play();
+	}
+	
 	public void quitClicked () 
 	{
 		Application.Quit();

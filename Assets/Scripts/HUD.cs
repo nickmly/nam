@@ -15,8 +15,16 @@ public class HUD : MonoBehaviour {
 	public GUIText scoreText;
 	public int score;
 	
+	public Canvas deadCanvas;
+	public GUIText deadText;
+	public SpriteRenderer deadBG;
+	
+	public bool paused = false;
+	public GUIText pausedText;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		EnemiesLeft = 0;
 		EnemiesDone = false;
 		enemyspawn = (EnemySpawn)GameObject.Find("SpawnPoint1").GetComponent("EnemySpawn");
@@ -30,6 +38,38 @@ public class HUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		
+		if(player.health <= 0)
+		{
+			player.transform.position = new Vector3(0.85507f,5.1239f,1.762541f);
+			deadCanvas.enabled = true;
+			deadText.enabled = true;
+			deadBG.enabled = true;
+		}
+		
+		if(Input.GetKeyDown (KeyCode.Escape))
+		{
+			if(!paused)
+			{
+				pausedText.enabled = true;
+				paused = true;
+				Object[] objects = FindObjectsOfType (typeof(GameObject));
+				foreach (GameObject go in objects) 
+				{
+					go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+				}
+			}
+			else
+			{
+				pausedText.enabled = false;
+				paused = false;
+				Object[] objects = FindObjectsOfType (typeof(GameObject));
+				foreach (GameObject go in objects) 
+				{
+					go.SendMessage ("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+				}
+			}
+		}
 	
 		if(enemyspawn.waveWait > 1.99)
 		{

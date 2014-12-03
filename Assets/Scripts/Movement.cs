@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
 	public AudioClip acRun;
 	public AudioClip acDuck;
 	public AudioClip acExp;
-	
+	public bool paused = false;
 	
 	public List<GameObject> audioObjects;
 	private AudioClip[] audioClips;
@@ -54,135 +54,147 @@ public class Movement : MonoBehaviour
 			
 			anim = GetComponent<Animator> ();
 		}
-
+		void OnPauseGame()
+		{
+			paused = true;
+			rigidbody2D.isKinematic = true;
+		}
+		void OnResumeGame()
+		{
+			paused = false;
+			rigidbody2D.isKinematic = false;
+		}
 		void Update ()
 		{
 
-
-			if (Input.GetKeyDown (KeyCode.Space) && !hasJumped) 
-			{				
-				hasJumped = true;
-				rigidbody2D.AddForce (new Vector3 (0, jumpSpeed, 0));			
-				audioObjects[4].GetComponent<AudioSource>().Play();
-			}
-			anim.SetBool ("HasJumped", hasJumped);
-
-			
-		if(gunObject.GetComponent<Gun>().isAutomatic)
-		{
-			anim.SetBool ("AutoThrow", Input.GetKey (KeyCode.Mouse0));
-			if (Input.GetKey (KeyCode.Mouse0) && canThrow) 
-			{				
-				thrown = true;
-				canThrow = false;
-				audioObjects[0].GetComponent<AudioSource>().Play();
-
-			}	
-		}
-		else
-		{
-			anim.SetBool ("isThrowing", thrown);
-			if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
+			if(health > 0 && !paused)
 			{
-				thrown = true;
-				canThrow = false;
-				audioObjects[1].GetComponent<AudioSource>().Play();
-			}	
-		}
-
-			if(!canThrow)
-			{
-				if (gunObject.GetComponent<Gun>().fireRate > 0f)
-				{
-					gunObject.GetComponent<Gun>().fireRate -= Time.deltaTime;
+				if (Input.GetKeyDown (KeyCode.Space) && !hasJumped) 
+				{				
+					hasJumped = true;
+					rigidbody2D.AddForce (new Vector3 (0, jumpSpeed, 0));			
+					audioObjects[4].GetComponent<AudioSource>().Play();
 				}
-				else
+				anim.SetBool ("HasJumped", hasJumped);
+	
+				
+			if(gunObject.GetComponent<Gun>().isAutomatic)
+			{
+				anim.SetBool ("AutoThrow", Input.GetKey (KeyCode.Mouse0));
+				if (Input.GetKey (KeyCode.Mouse0) && canThrow) 
+				{				
+					thrown = true;
+					canThrow = false;
+					audioObjects[0].GetComponent<AudioSource>().Play();
+	
+				}	
+			}
+			else
+			{
+				anim.SetBool ("isThrowing", thrown);
+				if (Input.GetKeyDown (KeyCode.Mouse0) && canThrow) 
 				{
-					if(gunObject.GetComponent<Gun>().ammo > 0)
+					thrown = true;
+					canThrow = false;
+					audioObjects[1].GetComponent<AudioSource>().Play();
+				}	
+			}
+	
+				if(!canThrow)
+				{
+					if (gunObject.GetComponent<Gun>().fireRate > 0f)
 					{
-						gunObject.renderer.enabled = true;
+						gunObject.GetComponent<Gun>().fireRate -= Time.deltaTime;
 					}
-					gunObject.GetComponent<Gun>().fireRate = gunObject.GetComponent<Gun>().maxFireRate;
-					canThrow = true;
+					else
+					{
+						if(gunObject.GetComponent<Gun>().ammo > 0)
+						{
+							gunObject.renderer.enabled = true;
+						}
+						gunObject.GetComponent<Gun>().fireRate = gunObject.GetComponent<Gun>().maxFireRate;
+						canThrow = true;
+					}
+				}
+	
+				if (thrown) 
+				{
+					if(gunObject.GetComponent<Gun>().throwTimer > 0)
+					{
+						gunObject.GetComponent<Gun>().throwTimer -= Time.deltaTime;
+					}
+					else
+					{
+						gunObject.GetComponent<Gun>().Throw (facingRight, velocity.x, gunObject.transform.rotation);
+						gunObject.GetComponent<Gun>().throwTimer = gunObject.GetComponent<Gun>().maxThrowTime;
+						thrown = false;
+					}
 				}
 			}
-
-			if (thrown) 
-			{
-				if(gunObject.GetComponent<Gun>().throwTimer > 0)
-				{
-					gunObject.GetComponent<Gun>().throwTimer -= Time.deltaTime;
-				}
-				else
-				{
-					gunObject.GetComponent<Gun>().Throw (facingRight, velocity.x, gunObject.transform.rotation);
-					gunObject.GetComponent<Gun>().throwTimer = gunObject.GetComponent<Gun>().maxThrowTime;
-					thrown = false;
-				}
-			}
-
 		}
 	
 	// Update is called once per frame
 		void FixedUpdate ()
 		{
-			velocity = rigidbody2D.velocity;
-			velocity.x = (float)(Input.GetAxis ("Horizontal") * moveSpeed);
-			rigidbody2D.velocity = velocity;
-
-			if ((velocity.x > 0.1 || velocity.x < 0.1) && !isRunning) 
+			if(health > 0 && !paused)
 			{
-				isRunning = true;
-				if(!hasJumped)
+				velocity = rigidbody2D.velocity;
+				velocity.x = (float)(Input.GetAxis ("Horizontal") * moveSpeed);
+				rigidbody2D.velocity = velocity;
+	
+				if ((velocity.x > 0.1 || velocity.x < 0.1) && !isRunning) 
 				{
-					audioObjects[5].GetComponent<AudioSource>().loop = true;
-					audioObjects[5].GetComponent<AudioSource>().Play();
+					isRunning = true;
+					if(velocity.y == 0)
+					{
+						audioObjects[5].GetComponent<AudioSource>().loop = true;
+						audioObjects[5].GetComponent<AudioSource>().Play();
+					}
+					else
+					{
+						if(audioObjects[5].GetComponent<AudioSource>().isPlaying)
+						{
+							audioObjects[5].GetComponent<AudioSource>().Pause();
+						}
+					}
 				}
-				else
+	
+				if (velocity.x == 0) 
 				{
+					isRunning = false;
 					if(audioObjects[5].GetComponent<AudioSource>().isPlaying)
 					{
 						audioObjects[5].GetComponent<AudioSource>().Pause();
 					}
 				}
-			}
-
-			if (velocity.x == 0) 
-			{
-				isRunning = false;
-				if(audioObjects[5].GetComponent<AudioSource>().isPlaying)
+	
+				anim.SetBool ("isRunning", isRunning);
+				
+				Vector3 v3 = Input.mousePosition;
+				v3.z = 10.0f;
+				v3 = Camera.main.ScreenToWorldPoint (v3);
+	
+				if (v3.x < rigidbody2D.position.x) 
 				{
-					audioObjects[5].GetComponent<AudioSource>().Pause();
+					Vector3 scale = transform.localScale;
+					scale.x = 1f;
+					transform.localScale = scale;
+					facingRight = false;
+				} 
+				else 
+				{
+					Vector3 scale = transform.localScale;
+					scale.x = -1f;
+					transform.localScale = scale;
+					facingRight = true;
 				}
+				
+				for(int i =0; i < audioObjects.Count; i++)
+				{			
+					audioObjects[i].transform.position = transform.position;
+				}
+			
 			}
-
-			anim.SetBool ("isRunning", isRunning);
-			
-			Vector3 v3 = Input.mousePosition;
-			v3.z = 10.0f;
-			v3 = Camera.main.ScreenToWorldPoint (v3);
-
-			if (v3.x < rigidbody2D.position.x) 
-			{
-				Vector3 scale = transform.localScale;
-				scale.x = 1f;
-				transform.localScale = scale;
-				facingRight = false;
-			} 
-			else 
-			{
-				Vector3 scale = transform.localScale;
-				scale.x = -1f;
-				transform.localScale = scale;
-				facingRight = true;
-			}
-			
-			for(int i =0; i < audioObjects.Count; i++)
-			{			
-				audioObjects[i].transform.position = transform.position;
-			}
-			
-			
 		}
 		
 		void OnCollisionStay2D(Collision2D col)
