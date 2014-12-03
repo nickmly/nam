@@ -57,6 +57,7 @@ public class HUD : MonoBehaviour {
 				{
 					go.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
 				}
+				Time.timeScale = 0f;
 			}
 			else
 			{
@@ -67,6 +68,7 @@ public class HUD : MonoBehaviour {
 				{
 					go.SendMessage ("OnResumeGame", SendMessageOptions.DontRequireReceiver);
 				}
+				Time.timeScale = 1f;
 			}
 		}
 	
