@@ -88,7 +88,13 @@ public class EnemyHealth : MonoBehaviour
 	
 			
 			rigidbody2D.AddForce (speed);
-			
+			GameObject exp = GameObject.Find ("Explosion");
+			float dist = Vector3.Distance(transform.position,exp.transform.position);
+			if(dist < 8 && exp.particleSystem.isPlaying && health > 0)
+			{
+				health = 0;	
+				GameObject.Find("GunPrefab").GetComponent<Gun>().hudd.AddScore(50);
+			}
 			Vector3 scale;
 			if (!dead) 
 			{
