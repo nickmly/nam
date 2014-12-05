@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
 	public HUD hudd;
 
 	public bool paused = false;
-	
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -55,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
 	{
 		if(!paused)
 		{
+			
 			EnemyBodyAnim.SetBool("isStill",isStill);
 		
 			DeltaDistance = Mathf.Abs (player.rigidbody2D.position.x) - Mathf.Abs(this.rigidbody2D.position.x);
@@ -67,12 +68,12 @@ public class EnemyHealth : MonoBehaviour
 			
 			if (player.position.x > rigidbody2D.position.x + 1) 
 			{
-				speed.x *= 1;		
+				speed.x *= 1;					
 			}
 			
 			if (player.position.x < rigidbody2D.position.x - 1f) 
 			{
-				speed.x *= -1;
+				speed.x *= -1;		
 			}
 			
 			if ((Mathf.Abs (DeltaDistance)) < AttackingDistance) 

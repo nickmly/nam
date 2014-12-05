@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemySpawn : MonoBehaviour
 {
 	public GameObject enemy;
+
 	public Vector3 spawnValues;
 	public int enemyCount;
 	public float spawnWait;
@@ -87,6 +88,7 @@ public class EnemySpawn : MonoBehaviour
 			{
 			Vector3 spawnPosition = new Vector3(68f * leftSide,3f,1.57f);
 				Quaternion spawnRotation = Quaternion.identity;
+				
 				Instantiate (enemy, spawnPosition, spawnRotation);
 				
 				yield return new WaitForSeconds (spawnWait);
