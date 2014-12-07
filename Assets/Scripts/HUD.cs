@@ -21,6 +21,8 @@ public class HUD : MonoBehaviour {
 	
 	public bool paused = false;
 	public GUIText pausedText;
+	
+	public GUIText pickupText;
 
 	// Use this for initialization
 	void Start () 

@@ -24,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
 	public HUD hudd;
 
 	public bool paused = false;
+	private int willPickupSpawn;
 
 	// Use this for initialization
 	void Start ()
@@ -119,6 +120,9 @@ public class EnemyHealth : MonoBehaviour
 				speedX = 0;			
 				dead = true; 
 	
+			
+			
+					
 				
 				if (deathTimer > 0) 
 				{
@@ -127,6 +131,50 @@ public class EnemyHealth : MonoBehaviour
 				} 
 				else 
 				{
+					willPickupSpawn = Random.Range(0,6);
+					if(willPickupSpawn == 1)
+					{
+						GameObject newPickup;
+						newPickup = (GameObject)Instantiate((Object)Resources.Load ("PickupPrefab"));		
+						newPickup.transform.position = transform.position;
+						int rand = Random.Range(1,hudd.enemyspawn.EnemyWave);
+						switch(rand)
+						{
+							case 1:
+								newPickup.GetComponent<GunPickup>().wType = "Pistol";
+								break;
+							case 2:
+								newPickup.GetComponent<GunPickup>().wType = "SawedOffShot";
+								break;
+							case 3:
+								newPickup.GetComponent<GunPickup>().wType = "AR";
+								break;
+							case 4:
+								newPickup.GetComponent<GunPickup>().wType = "LMG";
+								break;
+							case 5:
+								newPickup.GetComponent<GunPickup>().wType = "Winchester";
+								break;
+							case 6:
+								newPickup.GetComponent<GunPickup>().wType = "Revolver";
+								break;
+							case 7:
+								int duckChoose = Random.Range(0,4);							
+								if(duckChoose == 1)
+								{
+									newPickup.GetComponent<GunPickup>().wType = "RubberDuck";
+								}
+								break;
+							default:
+								
+								break;
+						}
+						newPickup.GetComponent<GunPickup>().gun = GameObject.Find ("GunPrefab").GetComponent<Gun>();
+						newPickup.GetComponent<GunPickup>().hud = GameObject.Find ("gameMaster").GetComponent<HUD>();
+						Sprite pSprite = Resources.Load<Sprite> ("Weapons/" + newPickup.GetComponent<GunPickup>().wType);
+						newPickup.GetComponent<SpriteRenderer>().sprite = pSprite;
+						
+					}
 					Destroy (gameObject);
 					
 				}	

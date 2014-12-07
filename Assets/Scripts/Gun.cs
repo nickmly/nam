@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour
 	public Transform arm;
 	public Movement player;
 
-	private float timer = 30f;
+	private float timer = 5f;
 	private bool collided = false;
 	public Vector3 tempScale;
 
@@ -346,44 +346,44 @@ public class Gun : MonoBehaviour
 	{
 		if(!paused)
 		{
-			if (Input.GetKeyDown (KeyCode.Alpha1))
-			{
-				gunType = "Pistol";
-				GetNewGun();
-			}
-			if (Input.GetKeyDown (KeyCode.Alpha2))
-			{
-				gunType = "AR";
-				GetNewGun();
-			}
-			if (Input.GetKeyDown (KeyCode.Alpha3))
-			{
-				gunType = "RubberDuck";
-				GetNewGun();
-			}
-			if (Input.GetKeyDown (KeyCode.Alpha4))
-			{
-				gunType = "SawedOffShot";
-				GetNewGun();
-			}
-			
-			if (Input.GetKeyDown (KeyCode.Alpha5))
-			{
-				gunType = "Revolver";
-				GetNewGun();
-			}
-			
-			if (Input.GetKeyDown (KeyCode.Alpha6))
-			{
-				gunType = "LMG";
-				GetNewGun();
-			}
-			
-			if (Input.GetKeyDown (KeyCode.Alpha7))
-			{
-				gunType = "Winchester";
-				GetNewGun();
-			}
+//			if (Input.GetKeyDown (KeyCode.Alpha1))
+//			{
+//				gunType = "Pistol";
+//				GetNewGun();
+//			}
+//			if (Input.GetKeyDown (KeyCode.Alpha2))
+//			{
+//				gunType = "AR";
+//				GetNewGun();
+//			}
+//			if (Input.GetKeyDown (KeyCode.Alpha3))
+//			{
+//				gunType = "RubberDuck";
+//				GetNewGun();
+//			}
+//			if (Input.GetKeyDown (KeyCode.Alpha4))
+//			{
+//				gunType = "SawedOffShot";
+//				GetNewGun();
+//			}
+//			
+//			if (Input.GetKeyDown (KeyCode.Alpha5))
+//			{
+//				gunType = "Revolver";
+//				GetNewGun();
+//			}
+//			
+//			if (Input.GetKeyDown (KeyCode.Alpha6))
+//			{
+//				gunType = "LMG";
+//				GetNewGun();
+//			}
+//			
+//			if (Input.GetKeyDown (KeyCode.Alpha7))
+//			{
+//				gunType = "Winchester";
+//				GetNewGun();
+//			}
 			if (Input.GetKeyDown (KeyCode.R)) 
 			{
 				ammo = maxAmmo;
